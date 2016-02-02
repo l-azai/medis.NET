@@ -1,0 +1,78 @@
+﻿context.VideoCategories.AddOrUpdate(new[] {
+                new VideoCategory {
+                    Id = 1,
+                    Name = "Animations",
+                    UrlName = "animations",
+                    CreatedByUserId = 1,
+                    DateCreated = DateTime.Today
+                },
+                new VideoCategory {
+                    Id = 2,
+                    Name = "Asian Movies",
+                    UrlName = "asian-movies",
+                    CreatedByUserId = 1,
+                    DateCreated = DateTime.Today
+                },
+                new VideoCategory {
+                    Id = 3,
+                    Name = "Asian TV Series",
+                    UrlName = "asian-tv-series",
+                    CreatedByUserId = 1,
+                    DateCreated = DateTime.Today
+                },
+                new VideoCategory {
+                    Id = 4,
+                    Name = "TV Series",
+                    UrlName = "tv-series",
+                    CreatedByUserId = 1,
+                    DateCreated = DateTime.Today
+                },
+                new VideoCategory {
+                    Id = 5,
+                    Name = "Movies",
+                    UrlName = "movies",
+                    CreatedByUserId = 1,
+                    DateCreated = DateTime.Today
+                },
+            });
+
+            context.Videos.AddOrUpdate(new[] {
+                new Video {
+                    Id = 1,
+                    Name = "Despicable Me",
+                    YearReleased = 2010,
+                    CategoryId = 1,
+                    ImageId = 1,
+                    CreatedByUserId = 1,
+                    DateCreated = DateTime.Today
+                },
+                new Video {
+                    Id = 2,
+                    Name = "Brave",
+                    YearReleased = 2012,
+                    CategoryId = 1,
+                    ImageId = 1,
+                    CreatedByUserId = 1,
+                    DateCreated = DateTime.Today
+                },
+                new Video {
+                    Id = 3,
+                    Name = "Finding Nemo",
+                    CategoryId = 1,
+                    ImageId = 1,
+                    YearReleased = 2003,
+                    CreatedByUserId = 1,
+                    DateCreated = DateTime.Today
+                }
+            });
+
+            context.VideoImages.AddOrUpdate(new[] {
+                new VideoImage {
+                    Id = 1,
+                    VideoId = 1,
+                    CreatedByUserId = 1,
+                    DateCreated = DateTime.Today
+                }
+            });
+
+            context.SaveChanges();

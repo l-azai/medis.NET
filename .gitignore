@@ -20,6 +20,8 @@ $RECYCLE.BIN/
 # custom
 packages
 .vs
+medis.Api/Documentation
+
 
 # =========================
 # Operating System Files

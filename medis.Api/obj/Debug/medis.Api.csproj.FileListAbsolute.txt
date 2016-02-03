@@ -72,3 +72,6 @@ C:\Users\s.Wai\Documents\medis.Api\medis.Api\bin\MongoDB.Driver.Core.dll
 C:\Users\s.Wai\Documents\medis.Api\medis.Api\bin\MongoDB.Driver.dll
 C:\Users\s.Wai\Documents\medis.Api\medis.Api\bin\MongoDB.Bson.xml
 C:\Users\s.Wai\Documents\medis.Api\medis.Api\bin\MongoDB.Driver.xml
+C:\Users\s.Wai\Documents\GitHub\medis.NET\medis.Api\obj\Debug\medis.Api.csprojResolveAssemblyReference.cache
+C:\Users\s.Wai\Documents\GitHub\medis.NET\medis.Api\obj\Debug\medis.Api.dll
+C:\Users\s.Wai\Documents\GitHub\medis.NET\medis.Api\obj\Debug\medis.Api.pdb

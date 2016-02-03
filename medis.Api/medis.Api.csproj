@@ -228,6 +228,7 @@
     <Content Include="content\scripts\ui-bootstrap-tpls-0.13.0.min.js" />
     <Content Include="content\scripts\underscore-min.js" />
     <Content Include="content\Site.css" />
+    <Content Include="Documentation\useful mongo commands.txt" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="content\css\bootstrap\bootstrap-theme.css.map" />
@@ -250,7 +251,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="useful mongo commands.txt" />
     <Content Include="Views\web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -262,7 +262,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="seed_data.txt" />
     <Content Include="app\views\indexOLD.html" />
     <Content Include="app\views\partials\admin\admin-video-add.html" />
     <Content Include="app\views\partials\admin\admin-video-edit.html" />
@@ -311,7 +310,6 @@
   <ItemGroup>
     <Folder Include="app\views\admin\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Documentation\" />
     <Folder Include="Mappers\" />
   </ItemGroup>
   <PropertyGroup>

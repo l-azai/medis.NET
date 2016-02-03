@@ -74,11 +74,13 @@ namespace medis.Api.Managers
         /// <returns></returns>
         public IEnumerable<DropDownListItem> GetVideoListByName(string name)
         {
-            var videos = _videoRepos.GetByName(name)?
-                .ToList()
-                .Select(x => new DropDownListItem { id = x.Id, name = x.Name });
+            //var videos = _videoRepos.GetByName(name)?
+            //    .ToList()
+            //    .Select(x => new DropDownListItem { id = x.Id, name = x.Name });
 
-            return videos;
+            //return videos;
+
+            return null;
         }
 
         /// <summary>

@@ -19,7 +19,7 @@ namespace medis.Api.Infrastructure
             return client.GetDatabase(DatabaseName);
         });
 
-        public static IMongoDatabase GetDatabase
+        public static IMongoDatabase Database
         {
             get
             {

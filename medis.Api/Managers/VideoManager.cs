@@ -25,7 +25,8 @@ namespace medis.Api.Managers
         /// <returns></returns>
         public IEnumerable<VideoCategory> GetAllVideoCategories()
         {
-            return _videoCatRepos.GetAll();
+            //return _videoCatRepos.GetAll();
+            return null;
         }
 
         /// <summary>
@@ -34,7 +35,8 @@ namespace medis.Api.Managers
         /// <returns></returns>
         public IEnumerable<VideoFile> GetAllVideos()
         {
-            return _videoRepos.GetAll();
+            //return _videoRepos.GetAll();
+            return null;
         }
 
         /// <summary>
@@ -44,7 +46,8 @@ namespace medis.Api.Managers
         /// <returns></returns>
         public VideoFile GetVideoById(int id)
         {
-            return _videoRepos.GetById(id);
+            //return _videoRepos.GetById(id);
+            return null;
         }
 
         /// <summary>
@@ -54,7 +57,9 @@ namespace medis.Api.Managers
         /// <returns></returns>
         public VideoCategory GetVideoCategoryById(int id)
         {
-            return _videoCatRepos.GetById(id);
+            //return _videoCatRepos.GetById(id);
+
+            return null;
         }
 
         /// <summary>

@@ -297,7 +297,6 @@
     <Compile Include="Models\Shared\DropDownListItem.cs" />
     <Compile Include="Models\Videos\VideoFile.cs" />
     <Compile Include="Models\Videos\VideoCategory.cs" />
-    <Compile Include="Models\Videos\VideoImage.cs" />
     <Compile Include="Models\Videos\VideoSearchResults.cs" />
     <Compile Include="Models\Videos\VideoSearchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

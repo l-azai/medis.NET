@@ -5,7 +5,9 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
+using MongoDB.Bson;
 
 namespace medis.Api.Repositories
 {
@@ -16,35 +18,91 @@ namespace medis.Api.Repositories
             return db.GetCollection<T>(typeof(T).Name);
         }
 
-        public T Add(T entity)
+        /// <summary>
+        /// Adds the specified entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns></returns>
+        public async Task<T> Add(T entity)
         {
-            throw new NotImplementedException();
+            var col = GetCollection();
+            await col.InsertOneAsync(entity);
+
+            return entity;
         }
 
-        public bool Delete(T entity)
+        /// <summary>
+        /// Gets all.
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IEnumerable<T>> GetAll()
         {
+            return await GetCollection()
+                .Find<T>(Builders<T>.Filter.Empty)
+                .ToListAsync();
+        }
+
+        /// <summary>
+        /// Gets the by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        public async Task<T> GetById(string id)
+        {
+            return await GetCollection()
+                .Find(Builders<T>.Filter.Eq(x => x.Id, ObjectId.Parse(id)))
+                .FirstOrDefaultAsync();
+        }
+
+        /// <summary>
+        /// Gets the by identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        public async Task<T> GetById(ObjectId id)
+        {
+            return await GetCollection()
+                .Find(Builders<T>.Filter.Eq(x => x.Id, id))
+                .FirstOrDefaultAsync();
+        }
+
+        /// <summary>
+        /// Updates the specified entity.
+        /// </summary>
+        /// <param name="entity">The entity.</param>
+        /// <returns></returns>
+        public async Task<bool> Update(T entity)
+        {
+            var result = await GetCollection()
+                .ReplaceOneAsync(Builders<T>.Filter.Eq(x => x.Id, entity.Id), entity);
             
-            throw new NotImplementedException();
+            return result.IsAcknowledged;
         }
 
-        public bool Delete(int id)
+        /// <summary>
+        /// Removes the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        public async Task<bool> Remove(string id)
         {
-            throw new NotImplementedException();
+            var deletedRecord = await GetCollection()
+                .DeleteOneAsync(Builders<T>.Filter.Eq(x => x.Id, ObjectId.Parse(id)));
+            
+            return deletedRecord.IsAcknowledged;
         }
 
-        public IEnumerable<T> GetAll()
+        /// <summary>
+        /// Removes the specified identifier.
+        /// </summary>
+        /// <param name="id">The identifier.</param>
+        /// <returns></returns>
+        public async Task<bool> Remove(ObjectId id)
         {
-            throw new NotImplementedException();
-        }
+            var deletedRecord = await GetCollection()
+                .DeleteOneAsync(Builders<T>.Filter.Eq(x => x.Id, id));
 
-        public T GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool Update(T entity)
-        {
-            throw new NotImplementedException();
+            return deletedRecord.IsAcknowledged;
         }
     }
 }

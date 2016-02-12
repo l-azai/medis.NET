@@ -1,20 +1,24 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace medis.Api.Interfaces.Repositories
 {
     public interface IRepository<T> where T : class
     {
-        IEnumerable<T> GetAll();
+        Task<IEnumerable<T>> GetAll();
 
-        T GetById(int id);
+        Task<T> GetById(string id);
 
-        T Add(T entity);
+        Task<T> GetById(ObjectId id);
 
-        bool Update(T entity);
+        Task<T> Add(T entity);
 
-        bool Delete(int id);
+        Task<bool> Update(T entity);
 
-        bool Delete(T entity);
+        Task<bool> Remove(string id);
+
+        Task<bool> Remove(ObjectId id);
     }
 }

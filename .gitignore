@@ -21,7 +21,7 @@ $RECYCLE.BIN/
 packages
 .vs
 medis.Api/Documentation
-
+medis.Api/bin
 
 # =========================
 # Operating System Files

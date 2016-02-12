@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "medis.Api", "medis.Api\medis.Api.csproj", "{20FB01B4-1AE2-4397-9D3C-DEBC0C1D23A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestQueryApp", "TestQueryApp\TestQueryApp.csproj", "{616E315B-850C-4400-8764-E9AA550400C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{20FB01B4-1AE2-4397-9D3C-DEBC0C1D23A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20FB01B4-1AE2-4397-9D3C-DEBC0C1D23A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20FB01B4-1AE2-4397-9D3C-DEBC0C1D23A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{616E315B-850C-4400-8764-E9AA550400C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{616E315B-850C-4400-8764-E9AA550400C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{616E315B-850C-4400-8764-E9AA550400C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{616E315B-850C-4400-8764-E9AA550400C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

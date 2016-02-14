@@ -20,7 +20,6 @@ $RECYCLE.BIN/
 # custom
 packages
 .vs
-medis.Api/Documentation/*
 medis.Api/bin/*
 medis.Api/obj/*
 *.dll

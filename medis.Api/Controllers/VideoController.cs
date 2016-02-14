@@ -41,7 +41,6 @@ namespace medis.Api.Controllers
             try
             {
                 var videos = _videoManager.GetVideosByCategory(category);
-
                 return Ok(videos);
             }
             catch (Exception ex)
@@ -55,9 +54,16 @@ namespace medis.Api.Controllers
         [Route("GetVideoById/{id}")]
         public IHttpActionResult GetVideoById(string id)
         {
-            var video = _videoManager.GetVideoById(id);
-
-            return Ok(video);
+            try {
+                var video = _videoManager.GetVideoById(id);
+                return Ok(video);
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+                return InternalServerError();
+            }
+            
         }
 
         [HttpGet]

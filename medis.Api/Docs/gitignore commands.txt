@@ -1,0 +1,11 @@
+Run from directory where gitignore is.
+If gitignore not working, run below commands
+
+- clear cache
+git rm -r --cached .
+
+- re-add
+git add .
+
+- commit with comment
+git commit -m ".gitignore is now working"

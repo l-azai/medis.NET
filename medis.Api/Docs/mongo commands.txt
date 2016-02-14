@@ -1,0 +1,14 @@
+-- start server
+mongod -dbpath c:\project\media-system\db
+
+-- db connection url
+mongodb://localhost:27017/medis
+
+-- Rename Collection
+db.collection.renameCollection("newName")
+
+-- rename fields of multiple records
+db.collection.update({}, { $rename: { "oldfieldname1": "newfieldname1", "oldfieldname2":"oldfieldname2" }}, { multi:true })
+
+-- export data
+mongoexport -d medis -c VideoCategory --pretty --out VideoCategory.json

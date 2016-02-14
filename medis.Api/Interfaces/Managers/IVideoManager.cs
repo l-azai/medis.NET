@@ -9,15 +9,15 @@ namespace medis.Api.Interfaces.Managers
     {
         Task<IList<VideoCategory>> GetAllVideoCategories();
 
-        Task<VideoCategory> GetVideoCategoryById(int id);
+        Task<VideoCategory> GetVideoCategoryById(string id);
 
         Task<IList<VideoFile>> GetAllVideos();
 
-        Task<VideoFile> GetVideoById(int id);
+        Task<VideoFile> GetVideoById(string id);
 
         Task<IList<VideoFile>> GetVideosByCategory(string category);
 
-        Task<IList<DropDownListItem>> GetVideoListByName(string name);
+        Task<IList<DropDownListItem>> GetVideosByName(string name);
 
         Task<VideoSearchResults> GetVideoPagedResults(VideoSearchModel searchModel);
     }

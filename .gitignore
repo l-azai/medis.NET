@@ -20,12 +20,11 @@ $RECYCLE.BIN/
 # custom
 packages
 .vs
-medis.Api/Documentation/
-medis.Api/bin/
-/medis.Api/Documentation/
-/medis.Api/bin/
-Documentation/
-bin/
+medis.Api/Documentation/*
+medis.Api/bin/*
+medis.Api/obj/*
+*.dll
+*.pdb
 
 # =========================
 # Operating System Files
@@ -51,8 +50,3 @@ bin/
 Network Trash Folder
 Temporary Items
 .apdisk
-medis.Api/bin/medis.Api.dll
-*.dll
-medis.Api/bin/medis.Api.pdb
-medis.Api/obj/Debug/medis.Api.dll
-*.pdb

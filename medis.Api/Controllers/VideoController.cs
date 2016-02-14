@@ -1,4 +1,5 @@
-﻿using medis.Api.Interfaces.Managers;
+﻿using log4net;
+using medis.Api.Interfaces.Managers;
 using medis.Api.Models.Videos;
 using System;
 using System.Collections;
@@ -12,6 +13,7 @@ namespace medis.Api.Controllers
     public class VideoController : ApiController
     {
         private IVideoManager _videoManager;
+        private readonly ILog log = LogManager.GetLogger(typeof(VideoController));
 
         public VideoController(IVideoManager videoManager)
         {
@@ -28,6 +30,7 @@ namespace medis.Api.Controllers
             }
             catch (Exception ex)
             {
+                log.Error(ex);
                 return InternalServerError();
             }
         }
@@ -35,9 +38,18 @@ namespace medis.Api.Controllers
         [Route("GetVideosByCategory/{category}")]
         public IHttpActionResult GetVideosByCategory(string category)
         {
-            var videos = _videoManager.GetVideosByCategory(category);
+            try
+            {
+                var videos = _videoManager.GetVideosByCategory(category);
 
-            return Ok(videos);
+                return Ok(videos);
+            }
+            catch (Exception ex)
+            {
+                log.Error(ex);
+                return InternalServerError();
+            }
+            
         }
 
         [Route("GetVideoById/{id}")]

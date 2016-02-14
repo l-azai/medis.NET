@@ -141,3 +141,5 @@ C:\Users\s.Wai\Documents\GitHub\medis.NET\medis.Api\bin\System.Web.Razor.xml
 C:\Users\s.Wai\Documents\GitHub\medis.NET\medis.Api\bin\System.Web.WebPages.xml
 C:\Users\s.Wai\Documents\GitHub\medis.NET\medis.Api\bin\System.Web.WebPages.Deployment.xml
 C:\Users\s.Wai\Documents\GitHub\medis.NET\medis.Api\bin\System.Web.WebPages.Razor.xml
+C:\Users\s.Wai\Documents\GitHub\medis.NET\medis.Api\bin\log4net.dll
+C:\Users\s.Wai\Documents\GitHub\medis.NET\medis.Api\bin\log4net.xml

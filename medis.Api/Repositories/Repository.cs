@@ -13,9 +13,11 @@ namespace medis.Api.Repositories
 {
     public class Repository<T> : IRepository<T> where T : Entity
     {
-        protected IMongoCollection<T> GetCollection() {
-            var db = DBInstance.Database;
-            return db.GetCollection<T>(typeof(T).Name);
+        protected IMongoCollection<T> Collection { 
+            get {
+                var db = DBInstance.Database;
+                return db.GetCollection<T>(typeof(T).Name);
+            }
         }
 
         /// <summary>
@@ -25,8 +27,7 @@ namespace medis.Api.Repositories
         /// <returns></returns>
         public async Task<T> Add(T entity)
         {
-            var col = GetCollection();
-            await col.InsertOneAsync(entity);
+            await Collection.InsertOneAsync(entity);
 
             return entity;
         }
@@ -37,7 +38,7 @@ namespace medis.Api.Repositories
         /// <returns></returns>
         public async Task<IList<T>> GetAll()
         {
-            return await GetCollection()
+            return await Collection
                 .Find<T>(Builders<T>.Filter.Empty)
                 .ToListAsync();
         }
@@ -49,7 +50,7 @@ namespace medis.Api.Repositories
         /// <returns></returns>
         public async Task<T> GetById(string id)
         {
-            return await GetCollection()
+            return await Collection
                 .Find(Builders<T>.Filter.Eq(x => x.Id, ObjectId.Parse(id)))
                 .FirstOrDefaultAsync();
         }
@@ -61,7 +62,7 @@ namespace medis.Api.Repositories
         /// <returns></returns>
         public async Task<T> GetById(ObjectId id)
         {
-            return await GetCollection()
+            return await Collection
                 .Find(Builders<T>.Filter.Eq(x => x.Id, id))
                 .FirstOrDefaultAsync();
         }
@@ -73,7 +74,7 @@ namespace medis.Api.Repositories
         /// <returns></returns>
         public async Task<bool> Update(T entity)
         {
-            var result = await GetCollection()
+            var result = await Collection
                 .ReplaceOneAsync(Builders<T>.Filter.Eq(x => x.Id, entity.Id), entity);
             
             return result.IsAcknowledged;
@@ -86,7 +87,7 @@ namespace medis.Api.Repositories
         /// <returns></returns>
         public async Task<bool> Remove(string id)
         {
-            var deletedRecord = await GetCollection()
+            var deletedRecord = await Collection
                 .DeleteOneAsync(Builders<T>.Filter.Eq(x => x.Id, ObjectId.Parse(id)));
             
             return deletedRecord.IsAcknowledged;
@@ -99,7 +100,7 @@ namespace medis.Api.Repositories
         /// <returns></returns>
         public async Task<bool> Remove(ObjectId id)
         {
-            var deletedRecord = await GetCollection()
+            var deletedRecord = await Collection
                 .DeleteOneAsync(Builders<T>.Filter.Eq(x => x.Id, id));
 
             return deletedRecord.IsAcknowledged;

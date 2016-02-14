@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Driver;
+using MongoDB.Driver.Linq;
 
 namespace medis.Api.Repositories.Videos
 {
@@ -19,14 +20,15 @@ namespace medis.Api.Repositories.Videos
         {
             var filter = Builders<VideoFile>.Filter.Eq(x => x.CategoryName, category);
 
-            return await GetCollection()
-                .Find(filter)
+            return await Collection.Find(filter)
                 .ToListAsync();
         }
 
         public async Task<IList<VideoFile>> GetByName(string name)
         {
-            throw new NotImplementedException();
+            return await Collection.AsQueryable()
+                .Where(x => x.Name.ToLower().Contains(name))
+                .ToListAsync();
         }
 
         public async Task<VideoSearchResults> GetPagedResults(VideoSearchModel searchModel)

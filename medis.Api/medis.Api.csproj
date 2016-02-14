@@ -232,7 +232,8 @@
     <Content Include="content\scripts\ui-bootstrap-tpls-0.13.0.min.js" />
     <Content Include="content\scripts\underscore-min.js" />
     <Content Include="content\Site.css" />
-    <Content Include="Documentation\useful mongo commands.txt" />
+    <Content Include="Docs\gitignore commands.txt" />
+    <Content Include="Docs\mongo commands.txt" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
     <Content Include="content\css\bootstrap\bootstrap-theme.css.map" />

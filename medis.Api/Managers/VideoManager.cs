@@ -5,6 +5,7 @@ using medis.Api.Models.Videos;
 using medis.Api.Interfaces.Repositories.Videos;
 using medis.Api.Models.Shared;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace medis.Api.Managers
 {
@@ -23,17 +24,16 @@ namespace medis.Api.Managers
         /// Gets all video categories.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<VideoCategory> GetAllVideoCategories()
+        public async Task<IList<VideoCategory>> GetAllVideoCategories()
         {
-            //return _videoCatRepos.GetAll();
-            return null;
+            return await _videoCatRepos.GetAll();
         }
 
         /// <summary>
         /// Gets all videos.
         /// </summary>
         /// <returns></returns>
-        public IEnumerable<VideoFile> GetAllVideos()
+        public async Task<IList<VideoFile>> GetAllVideos()
         {
             //return _videoRepos.GetAll();
             return null;
@@ -44,7 +44,7 @@ namespace medis.Api.Managers
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public VideoFile GetVideoById(int id)
+        public async Task<VideoFile> GetVideoById(int id)
         {
             //return _videoRepos.GetById(id);
             return null;
@@ -55,7 +55,7 @@ namespace medis.Api.Managers
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public VideoCategory GetVideoCategoryById(int id)
+        public Task<VideoCategory> GetVideoCategoryById(int id)
         {
             //return _videoCatRepos.GetById(id);
 
@@ -67,9 +67,9 @@ namespace medis.Api.Managers
         /// </summary>
         /// <param name="category">The category.</param>
         /// <returns></returns>
-        public IEnumerable<VideoFile> GetVideosByCategory(string category)
+        public async Task<IList<VideoFile>> GetVideosByCategory(string category)
         {
-            return _videoRepos.GetByCategory(category);
+            return await _videoRepos.GetByCategory(category);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace medis.Api.Managers
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        public IEnumerable<DropDownListItem> GetVideoListByName(string name)
+        public Task<IList<DropDownListItem>> GetVideoListByName(string name)
         {
             //var videos = _videoRepos.GetByName(name)?
             //    .ToList()
@@ -93,9 +93,10 @@ namespace medis.Api.Managers
         /// </summary>
         /// <param name="searchModel">The search model.</param>
         /// <returns></returns>
-        public VideoSearchResults GetVideoPagedResults(VideoSearchModel searchModel)
+        public Task<VideoSearchResults> GetVideoPagedResults(VideoSearchModel searchModel)
         {
-            return _videoRepos.GetPagedResults(searchModel ?? new VideoSearchModel());
+            //return _videoRepos.GetPagedResults(searchModel ?? new VideoSearchModel());
+            return null;
         }
     }
 }

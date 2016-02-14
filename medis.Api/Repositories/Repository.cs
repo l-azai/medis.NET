@@ -35,7 +35,7 @@ namespace medis.Api.Repositories
         /// Gets all.
         /// </summary>
         /// <returns></returns>
-        public async Task<IEnumerable<T>> GetAll()
+        public async Task<IList<T>> GetAll()
         {
             return await GetCollection()
                 .Find<T>(Builders<T>.Filter.Empty)

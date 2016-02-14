@@ -1,23 +1,24 @@
 ﻿using medis.Api.Models.Shared;
 using medis.Api.Models.Videos;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace medis.Api.Interfaces.Managers
 {
     public interface IVideoManager
     {
-        IEnumerable<VideoCategory> GetAllVideoCategories();
+        Task<IList<VideoCategory>> GetAllVideoCategories();
 
-        VideoCategory GetVideoCategoryById(int id);
+        Task<VideoCategory> GetVideoCategoryById(int id);
 
-        IEnumerable<VideoFile> GetAllVideos();
+        Task<IList<VideoFile>> GetAllVideos();
 
-        VideoFile GetVideoById(int id);
+        Task<VideoFile> GetVideoById(int id);
 
-        IEnumerable<VideoFile> GetVideosByCategory(string category);
+        Task<IList<VideoFile>> GetVideosByCategory(string category);
 
-        IEnumerable<DropDownListItem> GetVideoListByName(string name);
+        Task<IList<DropDownListItem>> GetVideoListByName(string name);
 
-        VideoSearchResults GetVideoPagedResults(VideoSearchModel searchModel);
+        Task<VideoSearchResults> GetVideoPagedResults(VideoSearchModel searchModel);
     }
 }

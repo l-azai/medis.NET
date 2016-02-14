@@ -7,7 +7,7 @@ namespace medis.Api.Interfaces.Repositories
 {
     public interface IRepository<T> where T : class
     {
-        Task<IEnumerable<T>> GetAll();
+        Task<IList<T>> GetAll();
 
         Task<T> GetById(string id);
 

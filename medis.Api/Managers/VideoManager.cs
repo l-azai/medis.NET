@@ -26,7 +26,7 @@ namespace medis.Api.Managers
         /// <returns></returns>
         public async Task<IList<VideoCategory>> GetAllVideoCategories()
         {
-            return await _videoCatRepos.GetAll();
+            return await _videoCatRepos.GetAll(); ;
         }
 
         /// <summary>

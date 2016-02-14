@@ -1,0 +1,253 @@
+{
+	"CategoryId": 1,
+	"CategoryName": "Animations",
+	"DateCreated": {
+		"$date": "2014-05-31T20:24:11.868Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-08-21T19:10:43.006Z"
+	},
+	"ImageGfsFilename": "image-4JEqpXdU",
+	"Name": "Brave",
+	"Quality": "",
+	"YearReleased": 2012,
+	"_id": {
+		"$oid": "554131626b91a3152841485e"
+	}
+}
+{
+	"CategoryId": 1,
+	"CategoryName": "Animations",
+	"DateCreated": {
+		"$date": "2014-05-31T20:24:11.868Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-08-17T20:21:57.810Z"
+	},
+	"ImageGfsFilename": "image-NyGspm_U",
+	"Name": "Despicable Me",
+	"Quality": "1080p",
+	"VideoGfsFilename": "video-EyVQTWJH",
+	"YearReleased": 2010,
+	"_id": {
+		"$oid": "554131626b91a3152841485f"
+	}
+}
+{
+	"CategoryId": 1,
+	"CategoryName": "Animations",
+	"DateCreated": {
+		"$date": "2014-05-31T20:24:11.868Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-08-17T18:23:02.542Z"
+	},
+	"ImageGfsFilename": "image-419jTQdU",
+	"Name": "Despicable Me 2",
+	"Quality": "1080p",
+	"VideoGfsFilename": "",
+	"YearReleased": 2013,
+	"_id": {
+		"$oid": "554131626b91a31528414860"
+	}
+}
+{
+	"CategoryId": 1,
+	"CategoryName": "Animations",
+	"DateCreated": {
+		"$date": "2014-05-31T20:24:11.868Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-06-15T21:07:33.197Z"
+	},
+	"ImageGfsFilename": "image-NJU2TmOL",
+	"Name": "Finding Nemo",
+	"Quality": "1080p",
+	"YearReleased": 2003,
+	"_id": {
+		"$oid": "554131626b91a31528414861"
+	}
+}
+{
+	"CategoryId": 1,
+	"CategoryName": "Animations",
+	"DateCreated": {
+		"$date": "2014-05-31T20:24:11.868Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-06-15T21:07:44.271Z"
+	},
+	"ImageGfsFilename": "image-4Jb6aXdU",
+	"Name": "Frozen",
+	"Quality": "DVDSCR",
+	"YearReleased": 2013,
+	"_id": {
+		"$oid": "554131626b91a31528414862"
+	}
+}
+{
+	"CategoryId": 1,
+	"CategoryName": "Animations",
+	"DateCreated": {
+		"$date": "2014-05-31T20:24:11.868Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-06-15T21:08:03.304Z"
+	},
+	"ImageGfsFilename": "image-VyVAT7dU",
+	"Name": "How to Train Your Dragon",
+	"Quality": "1080p",
+	"YearReleased": 2010,
+	"_id": {
+		"$oid": "554131626b91a31528414863"
+	}
+}
+{
+	"CategoryId": 1,
+	"CategoryName": "Animations",
+	"DateCreated": {
+		"$date": "2014-05-31T20:24:11.868Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-06-15T21:08:14.186Z"
+	},
+	"ImageGfsFilename": "image-NJkkCm_I",
+	"Name": "WALL-E",
+	"Quality": "1080p",
+	"YearReleased": 2008,
+	"_id": {
+		"$oid": "554134086b91a31528414864"
+	}
+}
+{
+	"CategoryId": 1,
+	"CategoryName": "Animations",
+	"DateCreated": {
+		"$date": "2014-05-31T20:24:11.868Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-06-15T21:08:22.033Z"
+	},
+	"ImageGfsFilename": "image-V18kA7O8",
+	"Name": "Wreck-It Ralph",
+	"Quality": "1080p",
+	"YearReleased": 2012,
+	"_id": {
+		"$oid": "554134316b91a31528414865"
+	}
+}
+{
+	"CategoryId": 1,
+	"CategoryName": "Animations",
+	"DateCreated": {
+		"$date": "2015-06-15T21:01:29.701Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-06-15T21:01:29.701Z"
+	},
+	"Name": "Tangled",
+	"YearReleased": 2010,
+	"_id": {
+		"$oid": "557f3d296d6565041e67ca7d"
+	}
+}
+{
+	"CategoryId": 5,
+	"CategoryName": "Movies",
+	"DateCreated": {
+		"$date": "2015-07-22T19:33:37.908Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-07-22T19:33:38.181Z"
+	},
+	"ImageGfsFilename": "image-EyfNy1Yt",
+	"Name": "The Shawshank Redemption",
+	"YearReleased": 1994,
+	"__v": 0,
+	"_id": {
+		"$oid": "55aff0116aafecd81a442bdf"
+	}
+}
+{
+	"CategoryId": 2,
+	"CategoryName": "Asian Movies",
+	"DateCreated": {
+		"$date": "2015-08-06T19:10:41.996Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-08-06T19:53:49.078Z"
+	},
+	"ImageGfsFilename": "image-NyG8esnq",
+	"Name": "Ip Man",
+	"YearReleased": 2008,
+	"__v": 0,
+	"_id": {
+		"$oid": "55c3b131962ce8f01617e3c0"
+	}
+}
+{
+	"CategoryId": 4,
+	"CategoryName": "TV series",
+	"DateCreated": {
+		"$date": "2015-08-06T19:34:33.316Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-08-06T19:53:56.089Z"
+	},
+	"ImageGfsFilename": "image-VJq1Ion5",
+	"Name": "Suits",
+	"YearReleased": 2011,
+	"__v": 0,
+	"_id": {
+		"$oid": "55c3b6c9bd9ca8d019c73d89"
+	}
+}
+{
+	"CategoryId": 3,
+	"CategoryName": "Asian TV series",
+	"DateCreated": {
+		"$date": "2015-08-06T19:40:02.255Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-08-06T19:54:01.896Z"
+	},
+	"ImageGfsFilename": "image-4JmVPih5",
+	"Name": "The Legend of the Condor Heroes",
+	"YearReleased": 1994,
+	"__v": 0,
+	"_id": {
+		"$oid": "55c3b812bd9ca8d019c73d8a"
+	}
+}
+{
+	"CategoryId": 1,
+	"CategoryName": "Animations",
+	"DateCreated": {
+		"$date": "2015-09-02T19:53:29.256Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-09-02T19:53:29.256Z"
+	},
+	"Name": "dsadsadas",
+	"YearReleased": 342423423,
+	"__v": 0,
+	"_id": {
+		"$oid": "55e753b9dbaf030c2d080829"
+	}
+}
+{
+	"CategoryId": 1,
+	"CategoryName": "Animations",
+	"DateCreated": {
+		"$date": "2015-09-02T19:57:39.746Z"
+	},
+	"DateUpdated": {
+		"$date": "2015-09-02T19:57:39.746Z"
+	},
+	"Name": "4324234",
+	"YearReleased": 3.24324324234e+11,
+	"__v": 0,
+	"_id": {
+		"$oid": "55e754b378726a0016972616"
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"_id": {
+		"$oid": "552a961d44ac793a7824415d"
+	},
+	"name": "Movies",
+	"typeId": 1
+}
+{
+	"_id": {
+		"$oid": "5533c16790f455af8484df2e"
+	},
+	"name": "Series",
+	"typeId": 2
+}

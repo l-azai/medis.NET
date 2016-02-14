@@ -1,6 +1,9 @@
 ﻿using medis.Api.Interfaces.Managers;
 using medis.Api.Models.Videos;
+using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace medis.Api.Controllers
@@ -16,11 +19,17 @@ namespace medis.Api.Controllers
         }
 
         [Route("GetVideoCategoryList")]
-        public IHttpActionResult GetVideoCategories()
+        public async Task<IHttpActionResult> GetVideoCategories()
         {
-            var categories = _videoManager.GetAllVideoCategories();
-
-            return Ok(categories);
+            try
+            {
+                var categories = await _videoManager.GetAllVideoCategories();
+                return Ok(categories);
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError();
+            }
         }
 
         [Route("GetVideosByCategory/{category}")]
@@ -31,8 +40,8 @@ namespace medis.Api.Controllers
             return Ok(videos);
         }
 
-        [Route("GetVideoById/{id:int}")]
-        public IHttpActionResult GetVideoById(int id)
+        [Route("GetVideoById/{id}")]
+        public IHttpActionResult GetVideoById(string id)
         {
             var video = _videoManager.GetVideoById(id);
 
@@ -51,7 +60,7 @@ namespace medis.Api.Controllers
         [Route("GetVideosByName/{name}")]
         public IHttpActionResult GetVideosByName(string name)
         {
-            var list = _videoManager.GetVideoListByName(name);
+            var list = _videoManager.GetVideosByName(name);
 
             return Ok(list);
         }

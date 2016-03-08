@@ -24,6 +24,11 @@ namespace medis.Api.Repositories.Videos
                 .ToListAsync();
         }
 
+        /// <summary>
+        /// Gets the name of the by.
+        /// </summary>
+        /// <param name="name">The name.</param>
+        /// <returns></returns>
         public async Task<IList<VideoFile>> GetByName(string name)
         {
             return await Collection.AsQueryable()

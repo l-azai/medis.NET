@@ -195,6 +195,7 @@
     <Content Include="app\directives\alert-msg.js" />
     <Content Include="app\directives\jqTests.js" />
     <Content Include="app\directives\sw-accordion.js" />
+    <Content Include="app\directives\typeaheadDir.js" />
     <Content Include="app\directives\views.js" />
     <Content Include="app\filters\allow-null.js" />
     <Content Include="app\filters\trustHtml.js" />
@@ -205,9 +206,11 @@
     <Content Include="app\services\admin-svc.js" />
     <Content Include="app\services\custom-args-svc.js" />
     <Content Include="app\services\message-svc.js" />
+    <None Include="states.json" />
     <Content Include="app\services\video-svc.js" />
     <Content Include="app\tests\controllers\admin-ctrl-spec.js" />
     <Content Include="app\tests\controllers\video-home-ctrl-spec.js" />
+    <Content Include="app\views\partials\typeahead.html" />
     <Content Include="content\bootstrap.css" />
     <Content Include="content\bootstrap.min.css" />
     <Content Include="content\css\animate.css" />
@@ -245,8 +248,13 @@
     <Content Include="content\css\StyleSheet.css.map" />
     <Content Include="content\css\StyleSheet.scss" />
     <Content Include="app\views\error.node" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <None Include="Scripts\angular.intellisense.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -256,6 +264,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <None Include="Scripts\_references.js" />
     <Content Include="Views\web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />

@@ -22,6 +22,7 @@ packages
 .vs
 medis.Api/bin/*
 medis.Api/obj/*
+medis.Api/Scripts/*
 *.dll
 *.pdb
 

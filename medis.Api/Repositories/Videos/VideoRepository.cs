@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
+using MongoDB.Bson;
 
 namespace medis.Api.Repositories.Videos
 {
@@ -18,9 +19,13 @@ namespace medis.Api.Repositories.Videos
         /// <returns></returns>
         public async Task<IList<VideoFile>> GetByCategory(string category)
         {
-            var filter = Builders<VideoFile>.Filter.Eq(x => x.CategoryName, category);
+            var filter = Builders<VideoFile>.Filter
+                .Regex(x => x.CategoryName, new BsonRegularExpression(category, "i"));
+
+            var projection = Builders<VideoFile>.Projection.Exclude("__v");
 
             return await Collection.Find(filter)
+                .Project<VideoFile>(projection)
                 .ToListAsync();
         }
 

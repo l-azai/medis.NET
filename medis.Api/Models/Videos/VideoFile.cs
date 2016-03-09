@@ -14,6 +14,8 @@
 
         public string VideoGfsFilename { get; set; }
 
+        public string Quality { get; set; }
+
         //public byte[] Content { get; set; }
     }
 }

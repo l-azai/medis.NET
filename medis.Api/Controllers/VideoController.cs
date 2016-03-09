@@ -36,11 +36,11 @@ namespace medis.Api.Controllers
         }
 
         [Route("GetVideosByCategory/{category}")]
-        public IHttpActionResult GetVideosByCategory(string category)
+        public async Task<IHttpActionResult> GetVideosByCategory(string category)
         {
             try
             {
-                var videos = _videoManager.GetVideosByCategory(category);
+                var videos = await _videoManager.GetVideosByCategory(category);
                 return Ok(videos);
             }
             catch (Exception ex)

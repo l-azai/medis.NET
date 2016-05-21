@@ -25,7 +25,7 @@ namespace medis.Api.Repositories
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
-        public async Task<T> Add(T entity)
+        public async Task<T> AddAsync(T entity)
         {
             await Collection.InsertOneAsync(entity);
 
@@ -36,7 +36,7 @@ namespace medis.Api.Repositories
         /// Gets all.
         /// </summary>
         /// <returns></returns>
-        public async Task<IList<T>> GetAll()
+        public async Task<IList<T>> GetAllAsync()
         {
             return await Collection
                 .Find<T>(Builders<T>.Filter.Empty)
@@ -48,7 +48,7 @@ namespace medis.Api.Repositories
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public async Task<T> GetById(string id)
+        public async Task<T> GetByIdAsync(string id)
         {
             return await Collection
                 .Find(Builders<T>.Filter.Eq(x => x.Id, ObjectId.Parse(id)))
@@ -60,7 +60,7 @@ namespace medis.Api.Repositories
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public async Task<T> GetById(ObjectId id)
+        public async Task<T> GetByIdAsync(ObjectId id)
         {
             return await Collection
                 .Find(Builders<T>.Filter.Eq(x => x.Id, id))
@@ -72,7 +72,7 @@ namespace medis.Api.Repositories
         /// </summary>
         /// <param name="entity">The entity.</param>
         /// <returns></returns>
-        public async Task<bool> Update(T entity)
+        public async Task<bool> UpdateAsync(T entity)
         {
             var result = await Collection
                 .ReplaceOneAsync(Builders<T>.Filter.Eq(x => x.Id, entity.Id), entity);
@@ -85,7 +85,7 @@ namespace medis.Api.Repositories
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public async Task<bool> Remove(string id)
+        public async Task<bool> RemoveAsync(string id)
         {
             var deletedRecord = await Collection
                 .DeleteOneAsync(Builders<T>.Filter.Eq(x => x.Id, ObjectId.Parse(id)));
@@ -98,7 +98,7 @@ namespace medis.Api.Repositories
         /// </summary>
         /// <param name="id">The identifier.</param>
         /// <returns></returns>
-        public async Task<bool> Remove(ObjectId id)
+        public async Task<bool> RemoveAsync(ObjectId id)
         {
             var deletedRecord = await Collection
                 .DeleteOneAsync(Builders<T>.Filter.Eq(x => x.Id, id));

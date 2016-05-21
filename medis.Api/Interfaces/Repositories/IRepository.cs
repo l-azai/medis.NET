@@ -7,18 +7,18 @@ namespace medis.Api.Interfaces.Repositories
 {
     public interface IRepository<T> where T : class
     {
-        Task<IList<T>> GetAll();
+        Task<IList<T>> GetAllAsync();
 
-        Task<T> GetById(string id);
+        Task<T> GetByIdAsync(string id);
 
-        Task<T> GetById(ObjectId id);
+        Task<T> GetByIdAsync(ObjectId id);
 
-        Task<T> Add(T entity);
+        Task<T> AddAsync(T entity);
 
-        Task<bool> Update(T entity);
+        Task<bool> UpdateAsync(T entity);
 
-        Task<bool> Remove(string id);
+        Task<bool> RemoveAsync(string id);
 
-        Task<bool> Remove(ObjectId id);
+        Task<bool> RemoveAsync(ObjectId id);
     }
 }

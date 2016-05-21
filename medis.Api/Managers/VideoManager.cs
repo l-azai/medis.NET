@@ -26,7 +26,7 @@ namespace medis.Api.Managers
         /// <returns></returns>
         public async Task<IList<VideoCategory>> GetAllVideoCategories()
         {
-            return await _videoCatRepos.GetAll(); ;
+            return await _videoCatRepos.GetAllAsync(); ;
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace medis.Api.Managers
         /// <returns></returns>
         public async Task<IList<VideoFile>> GetAllVideos()
         {
-            return await _videoRepos.GetAll();
+            return await _videoRepos.GetAllAsync();
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace medis.Api.Managers
         /// <returns></returns>
         public async Task<VideoFile> GetVideoById(string id)
         {
-            return await _videoRepos.GetById(id);
+            return await _videoRepos.GetByIdAsync(id);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace medis.Api.Managers
         /// <returns></returns>
         public async Task<VideoCategory> GetVideoCategoryById(string id)
         {
-            return await _videoCatRepos.GetById(id);
+            return await _videoCatRepos.GetByIdAsync(id);
         }
 
         /// <summary>

@@ -4,3 +4,9 @@ C:\Users\s.Wai\Documents\GitHub\medis.NET\TestQueryApp\bin\Debug\TestQueryApp.pd
 C:\Users\s.Wai\Documents\GitHub\medis.NET\TestQueryApp\obj\Debug\TestQueryApp.csprojResolveAssemblyReference.cache
 C:\Users\s.Wai\Documents\GitHub\medis.NET\TestQueryApp\obj\Debug\TestQueryApp.exe
 C:\Users\s.Wai\Documents\GitHub\medis.NET\TestQueryApp\obj\Debug\TestQueryApp.pdb
+D:\Project\GitHub\medis.NET\TestQueryApp\bin\Debug\TestQueryApp.exe.config
+D:\Project\GitHub\medis.NET\TestQueryApp\bin\Debug\TestQueryApp.exe
+D:\Project\GitHub\medis.NET\TestQueryApp\bin\Debug\TestQueryApp.pdb
+D:\Project\GitHub\medis.NET\TestQueryApp\obj\Debug\TestQueryApp.csprojResolveAssemblyReference.cache
+D:\Project\GitHub\medis.NET\TestQueryApp\obj\Debug\TestQueryApp.exe
+D:\Project\GitHub\medis.NET\TestQueryApp\obj\Debug\TestQueryApp.pdb

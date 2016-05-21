@@ -6,10 +6,10 @@ namespace medis.Api.Interfaces.Repositories.Videos
 {
     public interface IVideoRepository : IRepository<VideoFile>
     {
-        Task<IList<VideoFile>> GetByCategory(string category);
+        Task<IList<VideoFile>> GetByCategoryAsync(string category);
 
-        Task<IList<VideoFile>> GetByName(string name);
+        Task<IList<VideoFile>> GetByNameAsync(string name);
 
-        Task<VideoSearchResults> GetPagedResults(VideoSearchModel searchModel);
+        Task<VideoSearchResults> GetPagedResultsAsync(VideoSearchModel searchModel);
     }
 }

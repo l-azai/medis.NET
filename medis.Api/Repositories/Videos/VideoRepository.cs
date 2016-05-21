@@ -17,7 +17,7 @@ namespace medis.Api.Repositories.Videos
         /// </summary>
         /// <param name="category">The category.</param>
         /// <returns></returns>
-        public async Task<IList<VideoFile>> GetByCategory(string category)
+        public async Task<IList<VideoFile>> GetByCategoryAsync(string category)
         {
             var filter = Builders<VideoFile>.Filter
                 .Regex(x => x.CategoryName, new BsonRegularExpression(category, "i"));
@@ -34,14 +34,14 @@ namespace medis.Api.Repositories.Videos
         /// </summary>
         /// <param name="name">The name.</param>
         /// <returns></returns>
-        public async Task<IList<VideoFile>> GetByName(string name)
+        public async Task<IList<VideoFile>> GetByNameAsync(string name)
         {
             return await Collection.AsQueryable()
                 .Where(x => x.Name.ToLower().Contains(name))
                 .ToListAsync();
         }
 
-        public async Task<VideoSearchResults> GetPagedResults(VideoSearchModel searchModel)
+        public async Task<VideoSearchResults> GetPagedResultsAsync(VideoSearchModel searchModel)
         {
             throw new NotImplementedException();
         }

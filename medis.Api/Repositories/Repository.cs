@@ -39,7 +39,7 @@ namespace medis.Api.Repositories
         public async Task<IList<T>> GetAllAsync()
         {
             return await Collection
-                .Find<T>(Builders<T>.Filter.Empty)
+                .Find(x => true)
                 .ToListAsync();
         }
 

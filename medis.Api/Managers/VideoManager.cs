@@ -65,7 +65,7 @@ namespace medis.Api.Managers
         /// <returns></returns>
         public async Task<IList<VideoFile>> GetVideosByCategory(string category)
         {
-            return await _videoRepos.GetByCategory(category);
+            return await _videoRepos.GetByCategoryAsync(category);
         }
 
         /// <summary>

@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label class="col-sm-3 control-label" for="selectedCategory">Video Category</label>
                     <div class="col-sm-7">
-                        <select ng-model="formData.categoryId" class="form-control" name="categoryId" required ng-options="c._id as c.name for c in videoCategories">
+                        <select ng-model="formData.categoryId" class="form-control" name="categoryId" required ng-options="c.id as c.name for c in videoCategories">
                             <option value="" ng-selected="selected">Please select...</option>
                         </select>
                     </div>

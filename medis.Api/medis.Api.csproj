@@ -315,6 +315,7 @@
     <Compile Include="Repositories\Videos\VideoCategoryRepository.cs" />
     <Compile Include="Repositories\Videos\VideoRepository.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\AddVideoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\views\admin\" />

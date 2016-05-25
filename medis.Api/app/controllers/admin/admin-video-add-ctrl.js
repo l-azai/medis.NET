@@ -7,16 +7,20 @@
 
         $scope.addVideo = function(form) {
             addVideoForm = form;
-            var postData = {
+
+            var model = {
                 videoFilename: $scope.formData.videoName,
-                //videoCategoryId: $scope.formData.categoryId,
-                yearReleased: $scope.formData.yearReleased,
+                videoCategoryId: $scope.formData.categoryId,
+                yearReleased: $scope.formData.yearReleased
+            }
+            var postData = {
+                model: JSON.stringify(model),
                 file: $scope.formData.imageFile
             };
 
             Upload.upload({
                 url: '/api/admin/addvideo',
-                data: { file: $scope.formData.imageFile}
+                data: postData
             })
             .progress(function(evt) {
                 $scope.imageUploadProgress = parseInt(100.0 * evt.loaded / evt.total);

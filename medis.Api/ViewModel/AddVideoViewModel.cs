@@ -7,6 +7,5 @@ namespace medis.Api.ViewModel
         public string VideoFilename { get; set; }
         public string VideoCategoryId { get; set; }
         public int YearReleased { get; set; }
-        //public HttpPostedFileBase File { get; set; }
     }
 }

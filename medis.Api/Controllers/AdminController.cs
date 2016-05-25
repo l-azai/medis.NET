@@ -1,4 +1,9 @@
 ﻿using medis.Api.Interfaces.Managers;
+using medis.Api.ViewModel;
+using Newtonsoft.Json;
+using System;
+using System.IO;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -19,11 +24,11 @@ namespace medis.Api.Controllers
 
         [Route("addvideo")]
         [HttpPost]
-        public async Task<HttpResponseMessage> AddVideo()
+        public async Task<IHttpActionResult> AddVideo()
         {
             if (!Request.Content.IsMimeMultipartContent())
             {
-                throw new HttpResponseException(HttpStatusCode.UnsupportedMediaType);
+                return BadRequest("Unsupported media type.");
             }
 
             string root = HttpContext.Current.Server.MapPath("~/App_Data");
@@ -31,31 +36,27 @@ namespace medis.Api.Controllers
 
             try
             {
-                // Read the form data.
                 await Request.Content.ReadAsMultipartAsync(provider);
 
-                // This illustrates how to get the file names.
-                foreach (MultipartFileData file in provider.FileData)
-                {
-                    //Trace.WriteLine(file.Headers.ContentDisposition.FileName);
-                    var t = "";
+                if (!provider.FileData.Any()) {
+                    return BadRequest("Image file needs to be uploaded");
                 }
 
-                // Show all the key-value pairs.
-                foreach (var key in provider.FormData.AllKeys)
-                {
-                    foreach (var val in provider.FormData.GetValues(key))
-                    {
-                        var s = "";
-                        //Trace.WriteLine(string.Format("{0}: {1}", key, val));
-                    }
+                var filepath = provider.FileData.Select(x => x.LocalFileName).First();
+                var model = JsonConvert.DeserializeObject<AddVideoViewModel>(provider.FormData["model"]);
+
+                using (var fs = new FileStream(filepath, FileMode.Open)) {
+
+                    var test = "";
                 }
 
-                return Request.CreateResponse(HttpStatusCode.OK);
+                File.Delete(filepath);
+                
+                return Ok();
             }
             catch (System.Exception e)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e);
+                return InternalServerError(e);
             }
         }
     }

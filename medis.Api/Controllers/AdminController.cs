@@ -48,8 +48,10 @@ namespace medis.Api.Controllers
                 using (var fs = new FileStream(filepath, FileMode.Open)) {
 
                     var test = "";
+                    
+                    
                 }
-
+                
                 File.Delete(filepath);
                 
                 return Ok();

@@ -300,6 +300,7 @@
     </Compile>
     <Compile Include="Infrastructure\DBInstance.cs" />
     <Compile Include="Interfaces\Managers\IVideoManager.cs" />
+    <Compile Include="Interfaces\Repositories\GridFs\IGridFsRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepository.cs" />
     <Compile Include="Interfaces\Repositories\Videos\IVideoCategoryRepository.cs" />
     <Compile Include="Interfaces\Repositories\Videos\IVideoRepository.cs" />
@@ -311,6 +312,7 @@
     <Compile Include="Models\Videos\VideoSearchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Entity.cs" />
+    <Compile Include="Repositories\GridFs\GridFsRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
     <Compile Include="Repositories\Videos\VideoCategoryRepository.cs" />
     <Compile Include="Repositories\Videos\VideoRepository.cs" />

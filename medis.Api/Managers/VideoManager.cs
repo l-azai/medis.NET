@@ -20,59 +20,31 @@ namespace medis.Api.Managers
             _videoCatRepos = videoCatRepos;
         }
 
-        /// <summary>
-        /// Gets all video categories.
-        /// </summary>
-        /// <returns></returns>
         public async Task<IList<VideoCategory>> GetAllVideoCategories()
         {
             return await _videoCatRepos.GetAllAsync(); ;
         }
 
-        /// <summary>
-        /// Gets all videos.
-        /// </summary>
-        /// <returns></returns>
         public async Task<IList<VideoFile>> GetAllVideos()
         {
             return await _videoRepos.GetAllAsync();
         }
 
-        /// <summary>
-        /// Gets the video by identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
         public async Task<VideoFile> GetVideoById(string id)
         {
             return await _videoRepos.GetByIdAsync(id);
         }
 
-        /// <summary>
-        /// Gets the video category by identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
         public async Task<VideoCategory> GetVideoCategoryById(string id)
         {
             return await _videoCatRepos.GetByIdAsync(id);
         }
 
-        /// <summary>
-        /// Gets the videos by category.
-        /// </summary>
-        /// <param name="category">The category.</param>
-        /// <returns></returns>
         public async Task<IList<VideoFile>> GetVideosByCategory(string category)
         {
             return await _videoRepos.GetByCategoryAsync(category);
         }
 
-        /// <summary>
-        /// Gets the name of the video list by.
-        /// </summary>
-        /// <param name="name">The name.</param>
-        /// <returns></returns>
         public Task<IList<DropDownListItem>> GetVideosByName(string name)
         {
             //var videos = _videoRepos.GetByName(name)?
@@ -84,11 +56,6 @@ namespace medis.Api.Managers
             return null;
         }
 
-        /// <summary>
-        /// Gets the video paged results.
-        /// </summary>
-        /// <param name="searchModel">The search model.</param>
-        /// <returns></returns>
         public Task<VideoSearchResults> GetVideoPagedResults(VideoSearchModel searchModel)
         {
             //return _videoRepos.GetPagedResults(searchModel ?? new VideoSearchModel());

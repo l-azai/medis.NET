@@ -9,15 +9,11 @@ namespace medis.Api.Interfaces.Repositories
     {
         Task<IList<T>> GetAllAsync();
 
-        Task<T> GetByIdAsync(string id);
-
         Task<T> GetByIdAsync(ObjectId id);
 
         Task AddAsync(T entity);
 
         Task<bool> UpdateAsync(T entity);
-
-        Task<bool> RemoveAsync(string id);
 
         Task<bool> RemoveAsync(ObjectId id);
     }

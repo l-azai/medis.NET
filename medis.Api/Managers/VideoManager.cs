@@ -6,6 +6,7 @@ using medis.Api.Interfaces.Repositories.Videos;
 using medis.Api.Models.Shared;
 using System.Linq;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 
 namespace medis.Api.Managers
 {
@@ -30,7 +31,7 @@ namespace medis.Api.Managers
             return await _videoRepos.GetAllAsync();
         }
 
-        public async Task<VideoFile> GetVideoById(string id)
+        public async Task<VideoFile> GetVideoById(ObjectId id)
         {
             return await _videoRepos.GetByIdAsync(id);
         }

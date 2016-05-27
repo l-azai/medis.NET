@@ -1,5 +1,6 @@
 ﻿using medis.Api.Models.Shared;
 using medis.Api.Models.Videos;
+using MongoDB.Bson;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace medis.Api.Interfaces.Managers
 
         Task<IList<VideoFile>> GetAllVideos();
 
-        Task<VideoFile> GetVideoById(string id);
+        Task<VideoFile> GetVideoById(ObjectId id);
 
         Task<IList<VideoFile>> GetVideosByCategory(string category);
 

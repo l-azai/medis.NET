@@ -9,7 +9,7 @@ using MongoDB.Bson;
 
 namespace medis.Api.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : Entity
+    public class EntityRepository<T> : IRepository<T> where T : Entity
     {
         protected IMongoCollection<T> Collection { 
             get {
@@ -31,40 +31,25 @@ namespace medis.Api.Repositories
                 .ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(string id)
-        {
-            return await Collection
-                .Find(Builders<T>.Filter.Eq(x => x.Id, ObjectId.Parse(id)))
-                .FirstOrDefaultAsync();
-        }
-
         public async Task<T> GetByIdAsync(ObjectId id)
         {
             return await Collection
-                .Find(Builders<T>.Filter.Eq(x => x.Id, id))
+                .Find(x => x.Id == id)
                 .FirstOrDefaultAsync();
         }
 
         public async Task<bool> UpdateAsync(T entity)
         {
             var result = await Collection
-                .ReplaceOneAsync(Builders<T>.Filter.Eq(x => x.Id, entity.Id), entity);
+                .ReplaceOneAsync(x => x.Id == entity.Id, entity);
             
             return result.IsAcknowledged;
-        }
-
-        public async Task<bool> RemoveAsync(string id)
-        {
-            var deletedRecord = await Collection
-                .DeleteOneAsync(Builders<T>.Filter.Eq(x => x.Id, ObjectId.Parse(id)));
-            
-            return deletedRecord.IsAcknowledged;
         }
 
         public async Task<bool> RemoveAsync(ObjectId id)
         {
             var deletedRecord = await Collection
-                .DeleteOneAsync(Builders<T>.Filter.Eq(x => x.Id, id));
+                .DeleteOneAsync(x => x.Id == id);
 
             return deletedRecord.IsAcknowledged;
         }

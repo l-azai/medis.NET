@@ -1,6 +1,7 @@
 ﻿using log4net;
 using medis.Api.Interfaces.Managers;
 using medis.Api.Models.Videos;
+using MongoDB.Bson;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -55,8 +56,16 @@ namespace medis.Api.Controllers
         public IHttpActionResult GetVideoById(string id)
         {
             try {
-                var video = _videoManager.GetVideoById(id);
-                return Ok(video);
+                ObjectId videoId;
+
+                if (ObjectId.TryParse(id, out videoId))
+                {
+                    var video = _videoManager.GetVideoById(ObjectId.Parse(id));
+                    return Ok(video);
+                }
+                else {
+                    return BadRequest();
+                }
             }
             catch (Exception ex)
             {

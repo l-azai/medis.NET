@@ -314,7 +314,7 @@
     <Compile Include="Models\Videos\VideoSearchModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Entity.cs" />
-    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Repositories\EntityRepository.cs" />
     <Compile Include="Repositories\Videos\VideoCategoryRepository.cs" />
     <Compile Include="Repositories\Videos\VideoRepository.cs" />
     <Compile Include="Startup.cs" />

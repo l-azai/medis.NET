@@ -13,7 +13,7 @@ namespace medis.Api.Interfaces.Repositories
 
         Task<T> GetByIdAsync(ObjectId id);
 
-        Task<T> AddAsync(T entity);
+        Task AddAsync(T entity);
 
         Task<bool> UpdateAsync(T entity);
 

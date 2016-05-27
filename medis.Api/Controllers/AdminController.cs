@@ -1,4 +1,7 @@
-﻿using medis.Api.Interfaces.Managers;
+﻿using medis.Api.Enums;
+using medis.Api.Interfaces.Helpers;
+using medis.Api.Interfaces.Managers;
+using medis.Api.Models.Videos;
 using medis.Api.ViewModel;
 using Newtonsoft.Json;
 using System;
@@ -15,11 +18,13 @@ namespace medis.Api.Controllers
     [RoutePrefix("api/admin")]
     public class AdminController : ApiController
     {
-        private IVideoManager _videoManager;
+        private readonly IVideoManager _videoManager;
+        private readonly IGridFsHelper _gridFsHelper;
 
-        public AdminController(IVideoManager videoManager)
+        public AdminController(IVideoManager videoManager, IGridFsHelper gridFsHelper)
         {
             _videoManager = videoManager;
+            _gridFsHelper = gridFsHelper;
         }
 
         [Route("addvideo")]
@@ -47,9 +52,16 @@ namespace medis.Api.Controllers
 
                 using (var fs = new FileStream(filepath, FileMode.Open)) {
 
-                    var test = "";
-                    
-                    
+                    var id = await _gridFsHelper.UploadFromStreamAsync(model.VideoFilename, fs, MediaTypeEnum.Images);
+
+                    var video = new VideoFile {
+                        CategoryId = model.VideoCategoryId,
+                        Name = model.VideoFilename,
+                        YearReleased = model.YearReleased,
+                        ImageFileId = id
+                    };
+
+                    await _videoManager.AddVideoFile(video);
                 }
                 
                 File.Delete(filepath);

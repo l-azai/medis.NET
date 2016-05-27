@@ -4,9 +4,7 @@ using medis.Api.Models;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web;
 using MongoDB.Bson;
 
 namespace medis.Api.Repositories
@@ -20,22 +18,12 @@ namespace medis.Api.Repositories
             }
         }
 
-        /// <summary>
-        /// Adds the specified entity.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns></returns>
-        public async Task<T> AddAsync(T entity)
+        public async Task AddAsync(T entity)
         {
+            entity.DateCreated = DateTime.Now;
             await Collection.InsertOneAsync(entity);
-
-            return entity;
         }
 
-        /// <summary>
-        /// Gets all.
-        /// </summary>
-        /// <returns></returns>
         public async Task<IList<T>> GetAllAsync()
         {
             return await Collection
@@ -43,11 +31,6 @@ namespace medis.Api.Repositories
                 .ToListAsync();
         }
 
-        /// <summary>
-        /// Gets the by identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
         public async Task<T> GetByIdAsync(string id)
         {
             return await Collection
@@ -55,11 +38,6 @@ namespace medis.Api.Repositories
                 .FirstOrDefaultAsync();
         }
 
-        /// <summary>
-        /// Gets the by identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
         public async Task<T> GetByIdAsync(ObjectId id)
         {
             return await Collection
@@ -67,11 +45,6 @@ namespace medis.Api.Repositories
                 .FirstOrDefaultAsync();
         }
 
-        /// <summary>
-        /// Updates the specified entity.
-        /// </summary>
-        /// <param name="entity">The entity.</param>
-        /// <returns></returns>
         public async Task<bool> UpdateAsync(T entity)
         {
             var result = await Collection
@@ -80,11 +53,6 @@ namespace medis.Api.Repositories
             return result.IsAcknowledged;
         }
 
-        /// <summary>
-        /// Removes the specified identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
         public async Task<bool> RemoveAsync(string id)
         {
             var deletedRecord = await Collection
@@ -93,11 +61,6 @@ namespace medis.Api.Repositories
             return deletedRecord.IsAcknowledged;
         }
 
-        /// <summary>
-        /// Removes the specified identifier.
-        /// </summary>
-        /// <param name="id">The identifier.</param>
-        /// <returns></returns>
         public async Task<bool> RemoveAsync(ObjectId id)
         {
             var deletedRecord = await Collection

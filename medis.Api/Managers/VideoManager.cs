@@ -22,7 +22,7 @@ namespace medis.Api.Managers
 
         public async Task<IList<VideoCategory>> GetAllVideoCategories()
         {
-            return await _videoCatRepos.GetAllAsync(); ;
+            return await _videoCatRepos.GetAllAsync();
         }
 
         public async Task<IList<VideoFile>> GetAllVideos()
@@ -35,7 +35,7 @@ namespace medis.Api.Managers
             return await _videoRepos.GetByIdAsync(id);
         }
 
-        public async Task<VideoCategory> GetVideoCategoryById(string id)
+        public async Task<VideoCategory> GetVideoCategoryById(int id)
         {
             return await _videoCatRepos.GetByIdAsync(id);
         }
@@ -43,6 +43,12 @@ namespace medis.Api.Managers
         public async Task<IList<VideoFile>> GetVideosByCategory(string category)
         {
             return await _videoRepos.GetByCategoryAsync(category);
+        }
+
+        public async Task<VideoFile> AddVideoFile(VideoFile video) {
+            await _videoRepos.AddAsync(video);
+
+            return video;
         }
 
         public Task<IList<DropDownListItem>> GetVideosByName(string name)

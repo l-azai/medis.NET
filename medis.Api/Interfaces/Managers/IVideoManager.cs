@@ -9,7 +9,7 @@ namespace medis.Api.Interfaces.Managers
     {
         Task<IList<VideoCategory>> GetAllVideoCategories();
 
-        Task<VideoCategory> GetVideoCategoryById(string id);
+        Task<VideoCategory> GetVideoCategoryById(int id);
 
         Task<IList<VideoFile>> GetAllVideos();
 
@@ -20,5 +20,7 @@ namespace medis.Api.Interfaces.Managers
         Task<IList<DropDownListItem>> GetVideosByName(string name);
 
         Task<VideoSearchResults> GetVideoPagedResults(VideoSearchModel searchModel);
+
+        Task<VideoFile> AddVideoFile(VideoFile video);
     }
 }

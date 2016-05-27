@@ -1,4 +1,6 @@
-﻿namespace medis.Api.Models.Videos
+﻿using MongoDB.Bson;
+
+namespace medis.Api.Models.Videos
 {
     public class VideoFile : Entity
     {
@@ -10,9 +12,9 @@
 
         public string CategoryName { get; set; }
 
-        public string ImageGfsFilename { get; set; }
+        public ObjectId ImageFileId { get; set; }
 
-        public string VideoGfsFilename { get; set; }
+        public ObjectId VideoFileId { get; set; }
 
         public string Quality { get; set; }
 

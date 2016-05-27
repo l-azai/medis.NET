@@ -1,5 +1,4 @@
-﻿using medis.Api.Repositories;
-using Newtonsoft.Json.Serialization;
+﻿using Newtonsoft.Json.Serialization;
 using Owin;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
@@ -7,7 +6,6 @@ using System.Linq;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
-using System;
 
 namespace medis.Api
 {
@@ -43,6 +41,7 @@ namespace medis.Api
 
             RegisterRepositories(container);
             RegisterManagers(container);
+            RegisterHelpers(container);
 
             container.RegisterWebApiControllers(config);
 
@@ -51,9 +50,31 @@ namespace medis.Api
             config.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
         }
 
+        private void RegisterHelpers(Container container)
+        {
+            var types = typeof(Startup).Assembly;
+
+            var helpers = types.GetExportedTypes()
+                .Where(x => x.Namespace.StartsWith("medis.Api.Helpers"))
+                .Where(x => x.GetInterfaces().Any())
+                .Select(type => new {
+                    Service = type.GetInterfaces()
+                        .Where(interfaces => interfaces
+                            .Namespace
+                            .StartsWith("medis.Api.Interfaces.Helpers"))
+                            .Single(),
+                    Implementation = type
+                });
+
+            foreach (var hlp in helpers)
+            {
+                container.Register(hlp.Service, hlp.Implementation, Lifestyle.Scoped);
+            }
+        }
+
         private void RegisterManagers(Container container)
         {
-            var types = typeof(Repository<>).Assembly;
+            var types = typeof(Startup).Assembly;
 
             var managers = types.GetExportedTypes()
                 .Where(x => x.Namespace.StartsWith("medis.Api.Managers"))
@@ -75,7 +96,7 @@ namespace medis.Api
 
         private void RegisterRepositories(Container container)
         {
-            var types = typeof(Repository<>).Assembly;
+            var types = typeof(Startup).Assembly;
 
             var repositories = types.GetExportedTypes()
                 .Where(x => x.Namespace.StartsWith("medis.Api.Repositories."))

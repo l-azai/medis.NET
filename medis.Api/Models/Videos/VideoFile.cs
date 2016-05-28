@@ -14,7 +14,7 @@ namespace medis.Api.Models.Videos
 
         public ObjectId ImageFileId { get; set; }
 
-        public ObjectId VideoFileId { get; set; }
+        public ObjectId? VideoFileId { get; set; }
 
         public string Quality { get; set; }
     }

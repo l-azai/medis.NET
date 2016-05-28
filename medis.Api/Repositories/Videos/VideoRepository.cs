@@ -10,7 +10,7 @@ using MongoDB.Bson;
 
 namespace medis.Api.Repositories.Videos
 {
-    public class VideoRepository : SecondaryRepository<VideoFile>, IVideoRepository
+    public class VideoRepository : PrimaryRepository<VideoFile>, IVideoRepository
     {
         /// <summary>
         /// Gets the by category.

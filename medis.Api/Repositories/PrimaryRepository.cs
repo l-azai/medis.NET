@@ -21,6 +21,7 @@ namespace medis.Api.Repositories
         public async Task AddAsync(T entity)
         {
             entity.DateCreated = DateTime.Now;
+            entity.DateUpdated = DateTime.Now;
             await Collection.InsertOneAsync(entity);
         }
 
@@ -40,6 +41,8 @@ namespace medis.Api.Repositories
 
         public async Task<bool> UpdateAsync(T entity)
         {
+            entity.DateUpdated = DateTime.Now;
+
             var result = await Collection
                 .ReplaceOneAsync(x => x.Id == entity.Id, entity);
             

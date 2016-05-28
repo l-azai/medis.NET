@@ -1,25 +1,25 @@
 ﻿{
     "_id" : 1,
-    "Name" : "Animations",
-    "UrlKey" : "animations"
+    "name" : "Animations",
+    "urlKey" : "animations"
 }
 {
     "_id" : 2,
-    "Name" : "Asian Movies",
-    "UrlKey" : "asian-movies",
+    "name" : "Asian Movies",
+    "urlKey" : "asian-movies"
 }
 {
     "_id" : 3,
-    "Name" : "Asian TV Series",
-    "UrlKey" : "asian-tv-series"
+    "name" : "Asian TV Series",
+    "urlKey" : "asian-tv-series"
 }
 {
     "_id" : 4,
-    "Name" : "Movies",
-    "UrlKey" : "movies"
+    "name" : "Movies",
+    "urlKey" : "movies"
 }
 {
     "_id" : 5,
-    "Name" : "TV Series",
-    "UrlKey" : "tv-series"
+    "name" : "TV Series",
+    "urlKey" : "tv-series"
 }

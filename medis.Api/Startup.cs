@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json.Serialization;
+﻿using MongoDB.Bson.Serialization;
+using MongoDB.Bson.Serialization.Conventions;
+using Newtonsoft.Json.Serialization;
 using Owin;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
@@ -6,6 +8,7 @@ using System.Linq;
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
+using System;
 
 namespace medis.Api
 {
@@ -19,9 +22,21 @@ namespace medis.Api
 
             ConfigureDependencyInjection(config);
 
+            ConfigureConvention();
+
             app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 
             app.UseWebApi(config);
+        }
+
+        private void ConfigureConvention()
+        {
+            var pack = new ConventionPack();
+            pack.Add(new CamelCaseElementNameConvention());
+
+            ConventionRegistry.Register("camelCaseConvention",
+                pack,
+                x => x.FullName.StartsWith("medis.Api.Models"));
         }
 
         public void ConfigureWebApi(HttpConfiguration config)

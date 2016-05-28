@@ -11,7 +11,8 @@
             var model = {
                 videoFilename: $scope.formData.videoName,
                 videoCategoryId: $scope.formData.categoryId,
-                yearReleased: $scope.formData.yearReleased
+                yearReleased: $scope.formData.yearReleased,
+                quality: $scope.formData.quality
             }
             var postData = {
                 model: JSON.stringify(model),

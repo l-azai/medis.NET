@@ -1,32 +1,25 @@
 ﻿{
-    "_id" : ObjectId("5740bc12c311938d3e5aeb8e"),
+    "_id" : 1,
     "Name" : "Animations",
-    "UrlKey" : "animations",
-    "TypeId" : 1,
-    "DateCreated" : ISODate("2016-05-21T00:00:00.000Z"),
-    "DateUpdated" : ISODate("2016-05-21T00:00:00.000Z")
+    "UrlKey" : "animations"
 }
 {
-    "_id" : ObjectId("5740bc12c311938d3e5aeb8f"),
+    "_id" : 2,
     "Name" : "Asian Movies",
     "UrlKey" : "asian-movies",
-    "TypeId" : 1,
-    "DateCreated" : ISODate("2016-05-21T00:00:00.000Z"),
-    "DateUpdated" : ISODate("2016-05-21T00:00:00.000Z")
 }
 {
-    "_id" : ObjectId("5740bc68c311938d3e5aeb90"),
+    "_id" : 3,
+    "Name" : "Asian TV Series",
+    "UrlKey" : "asian-tv-series"
+}
+{
+    "_id" : 4,
     "Name" : "Movies",
-    "UrlKey" : "movies",
-    "TypeId" : 1,
-    "DateCreated" : ISODate("2016-05-21T00:00:00.000Z"),
-    "DateUpdated" : ISODate("2016-05-21T00:00:00.000Z")
+    "UrlKey" : "movies"
 }
 {
-    "_id" : ObjectId("5740bc68c311938d3e5aeb91"),
+    "_id" : 5,
     "Name" : "TV Series",
-    "UrlKey" : "tv-series",
-    "TypeId" : 1,
-    "DateCreated" : ISODate("2016-05-21T00:00:00.000Z"),
-    "DateUpdated" : ISODate("2016-05-21T00:00:00.000Z")
+    "UrlKey" : "tv-series"
 }

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace medis.Api.Interfaces.Repositories.Videos
 {
-    public interface IVideoRepository : IRepository<VideoFile>
+    public interface IVideoRepository : IPrimaryRepository<VideoFile>
     {
         Task<IList<VideoFile>> GetByCategoryAsync(string category);
 

@@ -303,7 +303,7 @@
     <Compile Include="Infrastructure\DBInstance.cs" />
     <Compile Include="Interfaces\Helpers\IGridFsHelper.cs" />
     <Compile Include="Interfaces\Managers\IVideoManager.cs" />
-    <Compile Include="Interfaces\Repositories\IRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IEntityRepository.cs" />
     <Compile Include="Interfaces\Repositories\Videos\IVideoCategoryRepository.cs" />
     <Compile Include="Interfaces\Repositories\Videos\IVideoRepository.cs" />
     <Compile Include="Managers\VideoManager.cs" />

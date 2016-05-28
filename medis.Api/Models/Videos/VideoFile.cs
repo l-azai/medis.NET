@@ -2,7 +2,7 @@
 
 namespace medis.Api.Models.Videos
 {
-    public class VideoFile : Entity
+    public class VideoFile : PrimaryEntity
     {
         public string Name { get; set; }
 
@@ -17,7 +17,5 @@ namespace medis.Api.Models.Videos
         public ObjectId VideoFileId { get; set; }
 
         public string Quality { get; set; }
-
-        //public byte[] Content { get; set; }
     }
 }

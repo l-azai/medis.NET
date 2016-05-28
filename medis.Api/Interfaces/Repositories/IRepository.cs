@@ -1,6 +1,4 @@
-﻿using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace medis.Api.Interfaces.Repositories
@@ -9,12 +7,8 @@ namespace medis.Api.Interfaces.Repositories
     {
         Task<IList<T>> GetAllAsync();
 
-        Task<T> GetByIdAsync(ObjectId id);
-
         Task AddAsync(T entity);
 
         Task<bool> UpdateAsync(T entity);
-
-        Task<bool> RemoveAsync(ObjectId id);
     }
 }

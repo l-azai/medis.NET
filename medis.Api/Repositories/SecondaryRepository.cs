@@ -2,14 +2,12 @@
 using medis.Api.Interfaces.Repositories;
 using medis.Api.Models;
 using MongoDB.Driver;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MongoDB.Bson;
 
 namespace medis.Api.Repositories
 {
-    public class EntityRepository<T> : IRepository<T> where T : Entity
+    public class SecondaryRepository<T> : ISecondaryRepository<T> where T : SecondaryEntity
     {
         protected IMongoCollection<T> Collection { 
             get {
@@ -20,7 +18,6 @@ namespace medis.Api.Repositories
 
         public async Task AddAsync(T entity)
         {
-            entity.DateCreated = DateTime.Now;
             await Collection.InsertOneAsync(entity);
         }
 
@@ -31,7 +28,7 @@ namespace medis.Api.Repositories
                 .ToListAsync();
         }
 
-        public async Task<T> GetByIdAsync(ObjectId id)
+        public async Task<T> GetByIdAsync(int id)
         {
             return await Collection
                 .Find(x => x.Id == id)
@@ -46,7 +43,7 @@ namespace medis.Api.Repositories
             return result.IsAcknowledged;
         }
 
-        public async Task<bool> RemoveAsync(ObjectId id)
+        public async Task<bool> RemoveAsync(int id)
         {
             var deletedRecord = await Collection
                 .DeleteOneAsync(x => x.Id == id);

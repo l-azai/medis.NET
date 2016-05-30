@@ -1,4 +1,6 @@
-﻿using medis.Api.Enums;
+﻿using log4net;
+using medis.Api.Enums;
+using medis.Api.Extensions;
 using medis.Api.Interfaces.Helpers;
 using medis.Api.Interfaces.Managers;
 using medis.Api.Models.Videos;
@@ -20,6 +22,7 @@ namespace medis.Api.Controllers
     {
         private readonly IVideoManager _videoManager;
         private readonly IGridFsHelper _gridFsHelper;
+        private readonly ILog Log = LogManager.GetLogger(typeof(AdminController));
 
         public AdminController(IVideoManager videoManager, IGridFsHelper gridFsHelper)
         {
@@ -38,39 +41,51 @@ namespace medis.Api.Controllers
 
             string root = HttpContext.Current.Server.MapPath("~/App_Data");
             var provider = new MultipartFormDataStreamProvider(root);
+            await Request.Content.ReadAsMultipartAsync(provider);
+
+            if (!provider.FileData.Any())
+            {
+                return BadRequest("Image file needs to be uploaded");
+            }
+            var filepath = provider.FileData.Select(x => x.LocalFileName).First();
 
             try
             {
-                await Request.Content.ReadAsMultipartAsync(provider);
-
-                if (!provider.FileData.Any()) {
-                    return BadRequest("Image file needs to be uploaded");
-                }
-
-                var filepath = provider.FileData.Select(x => x.LocalFileName).First();
                 var model = JsonConvert.DeserializeObject<AddVideoViewModel>(provider.FormData["model"]);
 
-                using (var fs = new FileStream(filepath, FileMode.Open)) {
+                var category = await _videoManager.GetVideoCategoryById(model.VideoCategoryId);
 
+                if (category == null)
+                {
+                    return BadRequest();
+                }
+
+                using (var fs = new FileStream(filepath, FileMode.Open)) {
                     var id = await _gridFsHelper.UploadFromStreamAsync(model.VideoFilename, fs, MediaTypeEnum.Images);
 
-                    var video = new VideoFile {
+                    var video = new VideoFile
+                    {
                         CategoryId = model.VideoCategoryId,
+                        CategoryName = category.Name,
                         Name = model.VideoFilename,
+                        NameUrl = model.VideoFilename.Slugify(),
                         YearReleased = model.YearReleased,
+                        Quality = model.Quality,
                         ImageFileId = id
                     };
 
                     await _videoManager.AddVideoFile(video);
                 }
-                
+
                 File.Delete(filepath);
-                
+
                 return Ok();
             }
-            catch (System.Exception e)
+            catch (Exception ex)
             {
-                return InternalServerError(e);
+                File.Delete(filepath);
+                Log.Error(ex);
+                return InternalServerError(ex);
             }
         }
     }

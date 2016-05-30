@@ -5,6 +5,8 @@ namespace medis.Api.Models.Videos
     public class VideoFile : PrimaryEntity
     {
         public string Name { get; set; }
+        
+        public string NameUrl { get; set; }
 
         public int YearReleased { get; set; }
 

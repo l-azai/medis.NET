@@ -296,6 +296,7 @@
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Enums\MediaTypeEnum.cs" />
     <Compile Include="Enums\UserEnum.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

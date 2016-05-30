@@ -14,9 +14,13 @@ namespace medis.Api.Models.Videos
 
         public string CategoryName { get; set; }
 
-        public ObjectId ImageFileId { get; set; }
+        public string ImageGfsFilename { get; set; }
 
-        public ObjectId? VideoFileId { get; set; }
+        public string ImageFilename { get; set; }
+
+        public string VideoGfsFilename { get; set; }
+
+        public string VideoFilename { get; set; }
 
         public string Quality { get; set; }
     }

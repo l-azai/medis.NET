@@ -293,6 +293,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MediaController.cs" />
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Enums\MediaTypeEnum.cs" />
     <Compile Include="Enums\UserEnum.cs" />
@@ -329,6 +330,7 @@
     <Folder Include="app\views\admin\" />
     <Folder Include="App_Data\" />
     <Folder Include="Mappers\" />
+    <Folder Include="Views\Media\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace medis.Api.Extensions
 {
@@ -14,6 +16,23 @@ namespace medis.Api.Extensions
             return sanitizedString.Trim()
                 .ToLower()
                 .Replace(" ", "-");
+        }
+
+        public static string ToGfsFilename(this string value) {
+            var filename = Path.GetFileNameWithoutExtension(value.SanitizeWebApiContentDispositionFilename())
+                .Slugify();
+
+            return filename.AddShortGuid();
+        }
+
+        public static string AddShortGuid(this string value) {
+            var guid = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
+
+            return $"{value}__{guid}";
+        }
+
+        public static string SanitizeWebApiContentDispositionFilename(this string value) {
+            return value.Trim('"');
         }
     }
 }

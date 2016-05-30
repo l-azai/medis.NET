@@ -47,7 +47,7 @@ namespace medis.Api.Controllers
             {
                 return BadRequest("Image file needs to be uploaded");
             }
-            var filepath = provider.FileData.Select(x => x.LocalFileName).First();
+            var file = provider.FileData.First();
 
             try
             {
@@ -60,8 +60,11 @@ namespace medis.Api.Controllers
                     return BadRequest();
                 }
 
-                using (var fs = new FileStream(filepath, FileMode.Open)) {
-                    var id = await _gridFsHelper.UploadFromStreamAsync(model.VideoFilename, fs, MediaTypeEnum.Images);
+                var uniqueFilename = file.Headers.ContentDisposition.FileName.ToGfsFilename();
+                var sanitizedFilename = file.Headers.ContentDisposition.FileName.SanitizeWebApiContentDispositionFilename();
+
+                using (var fs = new FileStream(file.LocalFileName, FileMode.Open)) {
+                    await _gridFsHelper.UploadFromStreamAsync(uniqueFilename, fs, MediaTypeEnum.Images);
 
                     var video = new VideoFile
                     {
@@ -71,19 +74,20 @@ namespace medis.Api.Controllers
                         NameUrl = model.VideoFilename.Slugify(),
                         YearReleased = model.YearReleased,
                         Quality = model.Quality,
-                        ImageFileId = id
+                        ImageGfsFilename = uniqueFilename,
+                        ImageFilename = sanitizedFilename
                     };
 
                     await _videoManager.AddVideoFile(video);
                 }
 
-                File.Delete(filepath);
+                File.Delete(file.LocalFileName);
 
                 return Ok();
             }
             catch (Exception ex)
             {
-                File.Delete(filepath);
+                File.Delete(file.LocalFileName);
                 Log.Error(ex);
                 return InternalServerError(ex);
             }

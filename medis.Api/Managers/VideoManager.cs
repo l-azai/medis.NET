@@ -7,6 +7,7 @@ using medis.Api.Models.Shared;
 using System.Linq;
 using System.Threading.Tasks;
 using MongoDB.Bson;
+using MongoDB.Driver;
 
 namespace medis.Api.Managers
 {
@@ -50,6 +51,11 @@ namespace medis.Api.Managers
             await _videoRepos.AddAsync(video);
 
             return video;
+        }
+
+        public async Task<bool> VideoFileExists(string name)
+        {
+            return await _videoRepos.GetMany(x => x.Name.ToLower() == name.ToLower()).AnyAsync();
         }
 
         public Task<IList<DropDownListItem>> GetVideosByName(string name)

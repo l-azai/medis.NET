@@ -29,16 +29,12 @@ namespace medis.Api.Repositories.Videos
                 .ToListAsync();
         }
 
-        /// <summary>
-        /// Gets the name of the by.
-        /// </summary>
-        /// <param name="name">The name.</param>
-        /// <returns></returns>
-        public async Task<IList<VideoFile>> GetByNameAsync(string name)
+
+        public async Task<VideoFile> GetByNameAsync(string name)
         {
             return await Collection.AsQueryable()
-                .Where(x => x.Name.ToLower().Contains(name))
-                .ToListAsync();
+                .Where(x => x.Name.ToLower() == name.ToLower())
+                .FirstOrDefaultAsync();
         }
 
         public async Task<VideoSearchResults> GetPagedResultsAsync(VideoSearchModel searchModel)

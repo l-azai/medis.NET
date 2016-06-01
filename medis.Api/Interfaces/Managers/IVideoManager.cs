@@ -23,5 +23,7 @@ namespace medis.Api.Interfaces.Managers
         Task<VideoSearchResults> GetVideoPagedResults(VideoSearchModel searchModel);
 
         Task<VideoFile> AddVideoFile(VideoFile video);
+
+        Task<bool> VideoFileExists(string name);
     }
 }

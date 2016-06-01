@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MongoDB.Bson;
+using System.Linq.Expressions;
+using MongoDB.Driver.Linq;
 
 namespace medis.Api.Repositories
 {
@@ -30,6 +32,11 @@ namespace medis.Api.Repositories
             return await Collection
                 .Find(x => true)
                 .ToListAsync();
+        }
+
+        public IFindFluent<T, T> GetMany(Expression<Func<T, bool>> query)
+        {
+            return Collection.Find(query);
         }
 
         public async Task<T> GetByIdAsync(ObjectId id)

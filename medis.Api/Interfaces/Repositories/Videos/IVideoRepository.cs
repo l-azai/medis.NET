@@ -8,7 +8,7 @@ namespace medis.Api.Interfaces.Repositories.Videos
     {
         Task<IList<VideoFile>> GetByCategoryAsync(string category);
 
-        Task<IList<VideoFile>> GetByNameAsync(string name);
+        Task<VideoFile> GetByNameAsync(string name);
 
         Task<VideoSearchResults> GetPagedResultsAsync(VideoSearchModel searchModel);
     }

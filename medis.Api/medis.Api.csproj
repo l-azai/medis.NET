@@ -47,6 +47,10 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
       <Private>True</Private>
@@ -311,6 +315,8 @@
     <Compile Include="Interfaces\Repositories\Videos\IVideoCategoryRepository.cs" />
     <Compile Include="Interfaces\Repositories\Videos\IVideoRepository.cs" />
     <Compile Include="Managers\VideoManager.cs" />
+    <Compile Include="Mappers\AutoMapperRegistry.cs" />
+    <Compile Include="Mappers\MappingProfile.cs" />
     <Compile Include="Models\SecondaryEntity.cs" />
     <Compile Include="Models\Shared\DropDownListItem.cs" />
     <Compile Include="Models\Videos\VideoFile.cs" />
@@ -325,11 +331,11 @@
     <Compile Include="Repositories\Videos\VideoRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModel\AddVideoViewModel.cs" />
+    <Compile Include="ViewModel\VideoCategoryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="app\views\admin\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Mappers\" />
     <Folder Include="Views\Media\" />
   </ItemGroup>
   <PropertyGroup>

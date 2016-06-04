@@ -1,6 +1,8 @@
-﻿using log4net;
+﻿using AutoMapper;
+using log4net;
 using medis.Api.Interfaces.Managers;
 using medis.Api.Models.Videos;
+using medis.Api.ViewModel;
 using MongoDB.Bson;
 using System;
 using System.Collections;
@@ -13,12 +15,14 @@ namespace medis.Api.Controllers
     [RoutePrefix("api/videos")]
     public class VideoController : ApiController
     {
-        private IVideoManager _videoManager;
+        private readonly IVideoManager _videoManager;
+        private readonly IMapper _mapper;
         private readonly ILog log = LogManager.GetLogger(typeof(VideoController));
 
-        public VideoController(IVideoManager videoManager)
+        public VideoController(IVideoManager videoManager, IMapper mapper)
         {
             _videoManager = videoManager;
+            _mapper = mapper;
         }
 
         [Route("GetVideoCategoryList")]
@@ -27,6 +31,7 @@ namespace medis.Api.Controllers
             try
             {
                 var categories = await _videoManager.GetAllVideoCategories();
+                var model = _mapper.Map<IList<VideoCategory>, IList<VideoCategoryViewModel>>(categories);
                 return Ok(categories);
             }
             catch (Exception ex)

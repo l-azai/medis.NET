@@ -9,6 +9,8 @@ using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Web.Http;
 using System;
+using AutoMapper;
+using medis.Api.Mappers;
 
 namespace medis.Api
 {
@@ -53,6 +55,12 @@ namespace medis.Api
         {
             var container = new Container();
             container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();
+            //container.Register(typeof(MapperConfiguration), AutoMapperRegistry.Create());
+
+            var mapperConfig = AutoMapperRegistry.Create();
+
+            container.Register(typeof(MapperConfiguration), () => mapperConfig, Lifestyle.Singleton);
+            container.Register(() => mapperConfig.CreateMapper(), Lifestyle.Singleton);
 
             RegisterRepositories(container);
             RegisterManagers(container);

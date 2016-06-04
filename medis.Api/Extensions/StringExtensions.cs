@@ -13,7 +13,8 @@ namespace medis.Api.Extensions
         public static string Slugify(this string value) {
             var sanitizedString = SanitizeString(value);
 
-            return sanitizedString.Trim()
+            return sanitizedString.Truncate(20)
+                .Trim()
                 .ToLower()
                 .Replace(" ", "-");
         }
@@ -33,6 +34,19 @@ namespace medis.Api.Extensions
 
         public static string SanitizeWebApiContentDispositionFilename(this string value) {
             return value.Trim('"');
+        }
+
+        public static string Truncate(this string value, int length) {
+            if (string.IsNullOrEmpty(value)) {
+                return string.Empty;
+            }
+
+            if (value.Length < length)
+            {
+                return value;
+            }
+
+            return value.Substring(0, length);
         }
     }
 }

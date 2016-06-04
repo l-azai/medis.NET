@@ -13,6 +13,6 @@ namespace medis.Api.Interfaces.Repositories
 
         Task<bool> RemoveAsync(ObjectId id);
 
-        IFindFluent<T, T> GetMany(Expression<Func<T, bool>> query)
+        IFindFluent<T, T> GetMany(Expression<Func<T, bool>> query);
     }
 }

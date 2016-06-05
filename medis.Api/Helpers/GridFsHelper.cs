@@ -18,22 +18,29 @@ namespace medis.Api.Helpers
             _db = DBInstance.Database;
         }
 
-        public async Task<ObjectId> UploadFromStreamAsync(string filename, Stream source, MediaTypeEnum bucketName)
+        public async Task<ObjectId> UploadFromStreamAsync(string gfsname, Stream source,string filename, string contentType, MediaTypeEnum bucketName)
         {
             var bucket = new GridFSBucket(_db, new GridFSBucketOptions {
                 BucketName = bucketName.ToString()
             });
-            
-            return await bucket.UploadFromStreamAsync(filename, source);
+
+            var options = new GridFSUploadOptions {
+                Metadata = new BsonDocument {
+                    { "filename", filename },
+                    { "contentType", contentType }
+                }
+            };
+
+            return await bucket.UploadFromStreamAsync(gfsname, source, options);
         }
 
-        public async Task DownloadToStreamByNameAsync(string filename, Stream source, MediaTypeEnum bucketName) {
+        public async Task DownloadToStreamByNameAsync(string gfsname, Stream source, MediaTypeEnum bucketName) {
             var bucket = new GridFSBucket(_db, new GridFSBucketOptions
             {
                 BucketName = bucketName.ToString()
             });
 
-            await bucket.DownloadToStreamByNameAsync(filename, source);
+            await bucket.DownloadToStreamByNameAsync(gfsname, source);
         }
 
         public async Task DownloadToStreamAsync(ObjectId id, Stream source, MediaTypeEnum bucketName)
@@ -56,6 +63,16 @@ namespace medis.Api.Helpers
             return await bucket.OpenDownloadStreamAsync(id);
         }
 
+        public async Task<GridFSDownloadStream> OpenDownloadStreamByNameAsync(string name, MediaTypeEnum bucketName)
+        {
+            var bucket = new GridFSBucket(_db, new GridFSBucketOptions
+            {
+                BucketName = bucketName.ToString()
+            });
+
+            return await bucket.OpenDownloadStreamByNameAsync(name);
+        }
+
         public async Task<byte[]> DownloadAsBytesAsync(ObjectId id, MediaTypeEnum bucketName)
         {
             var bucket = new GridFSBucket(_db, new GridFSBucketOptions
@@ -66,23 +83,23 @@ namespace medis.Api.Helpers
             return await bucket.DownloadAsBytesAsync(id);
         }
 
-        public async Task<byte[]> DownloadAsBytesByNameAsync(string filename, MediaTypeEnum bucketName) {
+        public async Task<byte[]> DownloadAsBytesByNameAsync(string gfsname, MediaTypeEnum bucketName) {
             var bucket = new GridFSBucket(_db, new GridFSBucketOptions
             {
                 BucketName = bucketName.ToString()
             });
 
-            return await bucket.DownloadAsBytesByNameAsync(filename);
+            return await bucket.DownloadAsBytesByNameAsync(gfsname);
         }
 
-        public async Task<bool> FileExistsAsync(string filename, MediaTypeEnum bucketName)
+        public async Task<bool> FileExistsAsync(string gfsname, MediaTypeEnum bucketName)
         {
             var bucket = new GridFSBucket(_db, new GridFSBucketOptions
             {
                 BucketName = bucketName.ToString()
             });
-
-            var filter = Builders<GridFSFileInfo>.Filter.Eq(x => x.Filename, filename);
+            
+            var filter = Builders<GridFSFileInfo>.Filter.Eq(x => x.Filename, gfsname);
             var fileInfo = await bucket.FindAsync(filter);
 
             return fileInfo.Any();

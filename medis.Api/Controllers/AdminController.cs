@@ -59,12 +59,12 @@ namespace medis.Api.Controllers
                 {
                     return BadRequest();
                 }
-
+                
                 var uniqueFilename = file.Headers.ContentDisposition.FileName.ToGfsFilename();
                 var sanitizedFilename = file.Headers.ContentDisposition.FileName.SanitizeWebApiContentDispositionFilename();
 
                 using (var fs = new FileStream(file.LocalFileName, FileMode.Open)) {
-                    await _gridFsHelper.UploadFromStreamAsync(uniqueFilename, fs, MediaTypeEnum.Images);
+                    await _gridFsHelper.UploadFromStreamAsync(uniqueFilename, fs, sanitizedFilename, MimeMapping.GetMimeMapping(sanitizedFilename), MediaTypeEnum.Images);
 
                     var video = new VideoFile
                     {

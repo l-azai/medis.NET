@@ -25,5 +25,9 @@ namespace medis.Api.Interfaces.Managers
         Task<VideoFile> AddVideoFile(VideoFile video);
 
         Task<bool> VideoFileExists(string name);
+
+        Task<VideoFile> GetLatestVideoByCategoryId(int id);
+
+        Task<VideoFile> GetLatestVideoByCategoryName(string name);
     }
 }

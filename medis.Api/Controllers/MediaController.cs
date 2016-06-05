@@ -23,10 +23,40 @@ namespace medis.Api.Controllers
             _gridFsHelper = gridFsHelper;
             _videoManager = videoManager;
         }
+        [HttpGet]
+        [Route("image/{filename}")]
+        public async Task<IHttpActionResult> ImageFile(string filename)
+        {
+            if (await _gridFsHelper.FileExistsAsync(filename, MediaTypeEnum.Images))
+            {
+                var response = new HttpResponseMessage(HttpStatusCode.OK);
+
+                using (var stream = await _gridFsHelper.OpenDownloadStreamByNameAsync(filename, MediaTypeEnum.Images)) {
+
+                    var byteLength = (int)stream.Length;
+                    var byteArr = new byte[byteLength];
+                    stream.Read(byteArr, 0, byteLength);
+
+                    response.Content = new ByteArrayContent(byteArr);
+                    response.Content.Headers.ContentType = new MediaTypeHeaderValue(stream.FileInfo.Metadata["contentType"].ToString());
+                    response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
+                    {
+                        FileName = stream.FileInfo.Metadata["filename"].ToString()
+                    };
+
+                    await stream.CloseAsync();
+                }
+
+                return ResponseMessage(response);
+            }
+            else {
+                return NotFound();
+            }
+        }
 
         [HttpGet]
-        [Route("image/{recordId}")]
-        public async Task<IHttpActionResult> ImageFile(string recordId) {
+        [Route("image-by-video/{recordId}")]
+        public async Task<IHttpActionResult> ImageByVideo(string recordId) {
             ObjectId objId;
 
             if (ObjectId.TryParse(recordId, out objId))

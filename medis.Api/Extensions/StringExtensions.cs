@@ -22,14 +22,8 @@ namespace medis.Api.Extensions
         public static string ToGfsFilename(this string value) {
             var filename = Path.GetFileNameWithoutExtension(value.SanitizeWebApiContentDispositionFilename())
                 .Slugify();
-
-            return filename.AddShortGuid();
-        }
-
-        public static string AddShortGuid(this string value) {
-            var guid = Convert.ToBase64String(Guid.NewGuid().ToByteArray());
-
-            return $"{value}__{guid}";
+            
+            return $"{filename}__{Guid.NewGuid()}";
         }
 
         public static string SanitizeWebApiContentDispositionFilename(this string value) {

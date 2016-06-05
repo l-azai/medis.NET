@@ -5,8 +5,8 @@ using medis.Api.Models.Videos;
 using medis.Api.ViewModel;
 using MongoDB.Bson;
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -32,7 +32,13 @@ namespace medis.Api.Controllers
             {
                 var categories = await _videoManager.GetAllVideoCategories();
                 var model = _mapper.Map<IList<VideoCategory>, IList<VideoCategoryViewModel>>(categories);
-                return Ok(categories);
+
+                foreach (var m in model) {
+                    var video = await _videoManager.GetLatestVideoByCategoryName(m.Name);
+                    m.ImageGfsFilename = video?.ImageGfsFilename;
+                }
+
+                return Ok(model);
             }
             catch (Exception ex)
             {

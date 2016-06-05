@@ -8,18 +8,20 @@ namespace medis.Api.Interfaces.Helpers
 {
     public interface IGridFsHelper
     {
-        Task<ObjectId> UploadFromStreamAsync(string filename, Stream source, MediaTypeEnum bucketName);
+        Task<ObjectId> UploadFromStreamAsync(string gfsname, Stream source, string filename, string contentType, MediaTypeEnum bucketName);
 
-        Task DownloadToStreamByNameAsync(string filename, Stream source, MediaTypeEnum bucketName);
+        Task DownloadToStreamByNameAsync(string gfsname, Stream source, MediaTypeEnum bucketName);
 
         Task DownloadToStreamAsync(ObjectId id, Stream source, MediaTypeEnum bucketName);
 
         Task<GridFSDownloadStream> OpenDownloadStreamAsync(ObjectId id, MediaTypeEnum bucketName);
 
+        Task<GridFSDownloadStream> OpenDownloadStreamByNameAsync(string name, MediaTypeEnum bucketName);
+
         Task<byte[]> DownloadAsBytesAsync(ObjectId id, MediaTypeEnum bucketName);
 
-        Task<byte[]> DownloadAsBytesByNameAsync(string filename, MediaTypeEnum bucketName);
+        Task<byte[]> DownloadAsBytesByNameAsync(string gfsname, MediaTypeEnum bucketName);
 
-        Task<bool> FileExistsAsync(string filename, MediaTypeEnum bucketName);
+        Task<bool> FileExistsAsync(string gfsname, MediaTypeEnum bucketName);
     }
 }

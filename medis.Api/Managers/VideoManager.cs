@@ -58,6 +58,20 @@ namespace medis.Api.Managers
             return await _videoRepos.GetMany(x => x.Name.ToLower() == name.ToLower()).AnyAsync();
         }
 
+        public async Task<VideoFile> GetLatestVideoByCategoryId(int id)
+        {
+            return await _videoRepos.GetMany(x => x.CategoryId == id)
+                .SortByDescending(x => x.DateUpdated)
+                .FirstOrDefaultAsync();
+        }
+
+        public async Task<VideoFile> GetLatestVideoByCategoryName(string name)
+        {
+            return await _videoRepos.GetMany(x => x.CategoryName == name)
+                .SortByDescending(x => x.DateUpdated)
+                .FirstOrDefaultAsync();
+        }
+
         public Task<IList<DropDownListItem>> GetVideosByName(string name)
         {
             //var videos = _videoRepos.GetByName(name)?

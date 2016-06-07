@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using medis.Api.Infrastructure;
 using MongoDB.Driver.GridFS;
+using System.Web;
 
 namespace medis.Api.Helpers
 {
@@ -18,7 +19,7 @@ namespace medis.Api.Helpers
             _db = DBInstance.Database;
         }
 
-        public async Task<ObjectId> UploadFromStreamAsync(string gfsname, Stream source,string filename, string contentType, MediaTypeEnum bucketName)
+        public async Task<ObjectId> UploadFromStreamAsync(string gfsname, Stream source,string filename, MediaTypeEnum bucketName)
         {
             var bucket = new GridFSBucket(_db, new GridFSBucketOptions {
                 BucketName = bucketName.ToString()
@@ -27,7 +28,7 @@ namespace medis.Api.Helpers
             var options = new GridFSUploadOptions {
                 Metadata = new BsonDocument {
                     { "filename", filename },
-                    { "contentType", contentType }
+                    { "contentType", MimeMapping.GetMimeMapping(filename) }
                 }
             };
 

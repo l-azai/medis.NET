@@ -8,7 +8,7 @@ namespace medis.Api.Interfaces.Helpers
 {
     public interface IGridFsHelper
     {
-        Task<ObjectId> UploadFromStreamAsync(string gfsname, Stream source, string filename, string contentType, MediaTypeEnum bucketName);
+        Task<ObjectId> UploadFromStreamAsync(string gfsname, Stream source, string filename, MediaTypeEnum bucketName);
 
         Task DownloadToStreamByNameAsync(string gfsname, Stream source, MediaTypeEnum bucketName);
 

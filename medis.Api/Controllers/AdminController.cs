@@ -64,7 +64,7 @@ namespace medis.Api.Controllers
                 var sanitizedFilename = file.Headers.ContentDisposition.FileName.SanitizeWebApiContentDispositionFilename();
 
                 using (var fs = new FileStream(file.LocalFileName, FileMode.Open)) {
-                    await _gridFsHelper.UploadFromStreamAsync(uniqueFilename, fs, sanitizedFilename, MimeMapping.GetMimeMapping(sanitizedFilename), MediaTypeEnum.Images);
+                    await _gridFsHelper.UploadFromStreamAsync(uniqueFilename, fs, sanitizedFilename, MediaTypeEnum.Images);
 
                     var video = new VideoFile
                     {

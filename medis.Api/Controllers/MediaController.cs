@@ -32,12 +32,12 @@ namespace medis.Api.Controllers
                 var response = new HttpResponseMessage(HttpStatusCode.OK);
 
                 using (var stream = await _gridFsHelper.OpenDownloadStreamByNameAsync(filename, MediaTypeEnum.Images)) {
+                    var memStream = new MemoryStream();
+                    stream.CopyTo(memStream);
+                    memStream.Seek(0, SeekOrigin.Begin);
 
-                    var byteLength = (int)stream.Length;
-                    var byteArr = new byte[byteLength];
-                    stream.Read(byteArr, 0, byteLength);
-
-                    response.Content = new ByteArrayContent(byteArr);
+                    response.Content = new StreamContent(memStream);
+                    response.Content.Headers.ContentLength = stream.Length;
                     response.Content.Headers.ContentType = new MediaTypeHeaderValue(stream.FileInfo.Metadata["contentType"].ToString());
                     response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
                     {
@@ -69,15 +69,19 @@ namespace medis.Api.Controllers
 
                 if (await _gridFsHelper.FileExistsAsync(videoFile.ImageGfsFilename, MediaTypeEnum.Images))
                 {
-                    var byteArr = await _gridFsHelper.DownloadAsBytesByNameAsync(videoFile.ImageGfsFilename, MediaTypeEnum.Images);
+                    var memStream = new MemoryStream();
+                    await _gridFsHelper.DownloadToStreamByNameAsync(videoFile.ImageGfsFilename, memStream, MediaTypeEnum.Images);
+                    memStream.Seek(0, SeekOrigin.Begin);
+
                     var response = new HttpResponseMessage(HttpStatusCode.OK);
-                    response.Content = new ByteArrayContent(byteArr);
+                    
+                    response.Content = new StreamContent(memStream);
+                    response.Content.Headers.ContentLength = memStream.Length;
+                    response.Content.Headers.ContentType = new MediaTypeHeaderValue(MimeMapping.GetMimeMapping(videoFile.ImageFilename));
                     response.Content.Headers.ContentDisposition = new ContentDispositionHeaderValue("attachment")
                     {
                         FileName = videoFile.ImageFilename
                     };
-                    response.Content.Headers.ContentType = new MediaTypeHeaderValue(
-                        MimeMapping.GetMimeMapping(videoFile.ImageFilename));
 
                     return ResponseMessage(response);
                 }
